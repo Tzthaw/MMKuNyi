@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_job_detail">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:layout_marginEnd="@dimen/margin_medium"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:orientation="vertical">
+
+        <net.aungpyaephyo.mmtextview.components.MMTextView
+            android:id="@+id/shortDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/text_regular_3x"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_medium"/>
+
+        <net.aungpyaephyo.mmtextview.components.MMTextView
+            android:id="@+id/fullDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_medium"/>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/margin_medium"
+            android:gravity="center_horizontal"
+            android:layout_marginStart="@dimen/margin_large"
+            android:stretchColumns="2">
+
+            <TableRow
+                android:gravity="start">
+                <net.aungpyaephyo.mmtextview.components.MMTextView
+                    android:id="@+id/emailText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:gravity="start"
+                    android:drawableStart="@drawable/ic_email"
+                    android:drawablePadding="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/margin_medium"/>
+                <net.aungpyaephyo.mmtextview.components.MMTextView
+                    android:id="@+id/availableText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_face"
+                    android:gravity="start"
+                    android:drawablePadding="@dimen/margin_medium"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:layout_marginStart="@dimen/margin_medium" />
+            </TableRow>
+            <TableRow>
+                <net.aungpyaephyo.mmtextview.components.MMTextView
+                    android:id="@+id/amountText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:gravity="start"
+                    android:drawableStart="@drawable/ic_money"
+                    android:drawablePadding="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/margin_medium"/>
+                <net.aungpyaephyo.mmtextview.components.MMTextView
+                    android:id="@+id/phNoText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_phone"
+                    android:gravity="start"
+                    android:drawablePadding="@dimen/margin_medium"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:layout_marginStart="@dimen/margin_medium" />
+            </TableRow>
+
+            <TableRow>
+                <net.aungpyaephyo.mmtextview.components.MMTextView
+                    android:id="@+id/postDateText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:gravity="start"
+                    android:drawableStart="@drawable/ic_date"
+                    android:drawablePadding="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/margin_medium"/>
+                <net.aungpyaephyo.mmtextview.components.MMTextView
+                    android:id="@+id/ratingText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:drawableStart="@drawable/ic_rate"
+                    android:gravity="start"
+                    android:drawablePadding="@dimen/margin_medium"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:layout_marginStart="@dimen/margin_medium" />
+            </TableRow>
+
+            <TableRow>
+                <net.aungpyaephyo.mmtextview.components.MMTextView
+                    android:id="@+id/locationText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:gravity="start"
+                    android:drawableStart="@drawable/ic_location"
+                    android:drawablePadding="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/margin_medium"/>
+
+            </TableRow>
+        </TableLayout>
+        <net.aungpyaephyo.mmtextview.components.MMTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Required Skill"
+            android:textSize="@dimen/text_regular_2x"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_large"
+            android:layout_marginBottom="@dimen/margin_medium"/>
+       <LinearLayout
+           android:id="@+id/requiredLayout"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginStart="@dimen/margin_large"
+           android:orientation="horizontal">
+       </LinearLayout>
+        <net.aungpyaephyo.mmtextview.components.MMTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Gender"
+            android:textSize="@dimen/text_regular_2x"
+            android:textStyle="bold"
+            android:layout_marginStart="@dimen/margin_large"
+            android:layout_marginTop="@dimen/margin_large"
+            android:layout_marginBottom="@dimen/margin_medium"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/margin_large">
+            <ImageView
+                android:id="@+id/genderMale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_male"/>
+            <ImageView
+                android:id="@+id/genderFemale"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_female"
+                android:layout_toEndOf="@+id/genderMale"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+
+</ScrollView>
