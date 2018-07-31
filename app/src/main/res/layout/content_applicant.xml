@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="80dp"
+    android:layout_height="90dp"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:elevation="@dimen/cardview_default_elevation"
+    android:layout_margin="@dimen/margin_small">
+
+    <ImageView
+        android:id="@+id/seekerImage"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_person"
+        android:background="@color/colorPrimary"/>
+
+    <net.aungpyaephyo.mmtextview.components.MMTextView
+        android:id="@+id/seekerName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="ThawZinToe"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_smaller"
+        android:paddingLeft="@dimen/margin_small"
+        android:paddingEnd="@dimen/margin_small"
+        android:layout_marginTop="@dimen/margin_small"/>
+
+</LinearLayout>

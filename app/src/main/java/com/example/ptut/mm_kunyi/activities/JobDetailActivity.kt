@@ -16,14 +16,23 @@ import com.example.ptut.mm_kunyi.mvp.presenters.JobDetailPresenter
 import com.example.ptut.mm_kunyi.mvp.presenters.JobListPresenter
 import com.example.ptut.mm_kunyi.mvp.views.JobDetailView
 import com.example.ptut.mm_kunyi.utils.AppConstants
-import com.example.ptut.mm_kunyi.vos.JobListVO
-import com.example.ptut.mm_kunyi.vos.RequiredSkillVO
 import kotlinx.android.synthetic.main.content_job_detail.*
 import java.util.ArrayList
+import android.support.v7.widget.LinearLayoutManager
+import com.example.ptut.mm_kunyi.adapters.ApplicantAdapter
+import com.example.ptut.mm_kunyi.adapters.InterestedAdapter
+import com.example.ptut.mm_kunyi.adapters.RelevantAdapter
+import com.example.ptut.mm_kunyi.adapters.ViewedAdapter
+import com.example.ptut.mm_kunyi.vos.*
+
 
 @SuppressLint("Registered")
 class JobDetailActivity:BaseActivity(),JobDetailView {
     private lateinit var jobListPresenter:JobDetailPresenter
+    private lateinit var applicantAdapter: ApplicantAdapter
+    private lateinit var interestedAdapter: InterestedAdapter
+    private lateinit var viewedAdapter: ViewedAdapter
+    private lateinit var relevantAdapter: RelevantAdapter
 
     companion object {
         fun newIntent(context: Context, jobId: Int): Intent {
@@ -47,6 +56,7 @@ class JobDetailActivity:BaseActivity(),JobDetailView {
     }
     @SuppressLint("SetTextI18n")
     private fun setUpUiComponent(jobListVO: JobListVO){
+        //set data initial
         shortDescription.text=jobListVO.shortDesc
         fullDescription.text=jobListVO.fullDesc
         emailText.text=jobListVO.email
@@ -56,23 +66,71 @@ class JobDetailActivity:BaseActivity(),JobDetailView {
         phNoText.text=jobListVO.phoneNo
         ratingText.text="${jobListVO.makeMoneyRating}"
         locationText.text=jobListVO.location
-
         val lparams = LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT)
+
+        //set RequiredSkill Layout data
+        requiredSkill(lparams,jobListVO)
+        //set JobDuration Layout data
+        jobDuration(jobListVO)
+        applicantView(jobListVO)
+        interestedView(jobListVO)
+        viewed(jobListVO)
+        relevantView(jobListVO)
+    }
+
+    private fun requiredSkill(lparams: LinearLayout.LayoutParams,jobListVO: JobListVO){
         lparams.setMargins(4,8,4,0);
-
         for(requiredSkill in jobListVO.requiredSkill!!){
-           addTextView(requiredLayout,lparams,requiredSkill)
+            addTextView(requiredLayout,lparams,requiredSkill)
         }
-
+    }
+    private fun jobDuration(jobListVO: JobListVO){
+        startDate.text=jobListVO.jobDuration?.jobStartDate
+        endDate.text=jobListVO.jobDuration?.jobEndDate
+        totalDate.text="${jobListVO.jobDuration?.totalWorkingDays}"
+        workingDay.text="${jobListVO.jobDuration?.workingDaysPerWeek}"
+        workHour.text="${jobListVO.jobDuration?.workingHoursPerDay}"
     }
 
     private fun addTextView(layout:LinearLayout,lparams:LinearLayout.LayoutParams,requiredSkillVO: RequiredSkillVO){
         val tv = TextView(this)
-        tv.background=resources.getDrawable(R.drawable.border_bg)
+        tv.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_dot, 0, 0, 0)
+        tv.compoundDrawablePadding = 8;
         tv.layoutParams = lparams
         tv.text=requiredSkillVO.skillName
-        tv.setPadding(8,8,8,8)
+        tv.setPadding(4,8,8,8)
         layout.addView(tv)
     }
+
+    private fun applicantView(jobListVO: JobListVO){
+        val applicantLayout = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        applicantRecycler.layoutManager=applicantLayout
+        applicantAdapter= ApplicantAdapter(applicationContext)
+        applicantRecycler.adapter=applicantAdapter
+        applicantAdapter.setNewData(jobListVO.applicant as MutableList<ApplicantVO>)
+    }
+    private fun interestedView(jobListVO: JobListVO){
+        val applicantLayout = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        interestedRecycler.layoutManager=applicantLayout
+        interestedAdapter= InterestedAdapter(applicationContext)
+        interestedRecycler.adapter=interestedAdapter
+        interestedAdapter.setNewData(jobListVO.interested as MutableList<InterestedVO>)
+    }
+    private fun viewed(jobListVO: JobListVO){
+        val applicantLayout = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        viewedRecycler.layoutManager=applicantLayout
+        viewedAdapter= ViewedAdapter(applicationContext)
+        viewedRecycler.adapter=viewedAdapter
+        viewedAdapter.setNewData(jobListVO.viewed as MutableList<ViewedVO>)
+    }
+    private fun relevantView(jobListVO: JobListVO){
+        val applicantLayout = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        relevantRecycler.layoutManager=applicantLayout
+        relevantAdapter= RelevantAdapter(applicationContext)
+        relevantRecycler.adapter=relevantAdapter
+        relevantAdapter.setNewData(jobListVO.relevant as MutableList<RelevantVO>)
+    }
+
+
 }

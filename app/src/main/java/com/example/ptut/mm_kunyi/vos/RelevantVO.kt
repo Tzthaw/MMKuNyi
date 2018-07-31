@@ -7,4 +7,4 @@ data class RelevantVO(
 		val seekerSkill: List<SeekerSkillIVO?>? = null,
 		val seekerProfilePicUrl: String? = null,
 		val relevancyPercentage: Double? = null
-)
+):BaseVO()

@@ -6,4 +6,4 @@ data class InterestedVO(
         val seekerId: Int? = null,
         val seekerSkill: List<SeekerSkillIVO?>? = null,
         val seekerProfilePicUrl: String? = null
-)
+):BaseVO()

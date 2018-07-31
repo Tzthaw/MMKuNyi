@@ -8,4 +8,4 @@ data class ApplicantVO(
         val seekerSkill: List<SeekerSkillIVO?>? = null,
         val seekerProfilePicUrl: String? = null,
         val whyShouldHire: List<WhyShouldHireVO?>? = null
-)
+):BaseVO()
