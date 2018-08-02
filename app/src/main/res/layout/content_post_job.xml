@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:showIn="@layout/activity_post_job"
+    app:behavior_overlapTop="50dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:background="@color/white"
+        android:layout_margin="@dimen/margin_medium">
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/colorPrimary"
+            app:hintTextAppearance="@style/CustomTextInputLayout"
+            android:layout_margin="@dimen/margin_medium">
+            <android.support.design.widget.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Short Description"
+                android:textColor="@color/colorPrimary" />
+        </android.support.design.widget.TextInputLayout>
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/colorPrimary"
+            app:hintTextAppearance="@style/CustomTextInputLayout"
+            android:layout_margin="@dimen/margin_medium">
+            <EditText
+                android:id="@+id/textArea_information"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_bg"
+                android:gravity="top|start"
+                android:layout_margin="@dimen/margin_small"
+                android:hint="Full Description"
+                android:padding="@dimen/margin_medium"
+                android:inputType="textMultiLine"
+                android:overScrollMode="always"
+                android:scrollbarStyle="insideInset"
+                android:scrollbars="vertical"
+                android:lines="4"
+                android:textAppearance="?android:attr/textAppearanceMedium"
+                android:scrollHorizontally="false" />
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+</android.support.v4.widget.NestedScrollView>

@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/color_sign_up"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:weightSum="1">
+
+    <ImageView
+        android:id="@+id/userProfileImage"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/white"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:background="@drawable/rectangle"
+        android:layout_margin="@dimen/margin_medium"
+        android:src="@drawable/ic_person" />
+
+
+    <android.support.design.widget.TextInputLayout
+        style="@style/Widget.TextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="@dimen/margin_medium"
+        android:id="@+id/email_input">
+        <android.support.design.widget.TextInputEditText
+            style="@style/Widget.TextEdit"
+            android:id="@+id/email"
+            android:hint="Email"
+            android:inputType="textEmailAddress" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        style="@style/Widget.TextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="@dimen/margin_medium"
+        android:id="@+id/userNameInput">
+        <android.support.design.widget.TextInputEditText
+            style="@style/Widget.TextEdit"
+            android:id="@+id/userName"
+            android:hint="UserName"
+            android:inputType="textEmailAddress" />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        style="@style/Widget.TextInputLayout"
+        android:layout_width="match_parent"
+        android:layout_marginBottom="@dimen/margin_large"
+        android:id="@+id/passwordInput">
+        <android.support.design.widget.TextInputEditText
+            style="@style/Widget.TextEdit"
+            android:id="@+id/passwordEdit"
+            android:hint="Password"
+            android:inputType="textEmailAddress" />
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/registerButton"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/rectangle"
+        android:fontFamily="serif"
+        android:text="Register"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Click here to login"
+        android:textColor="@color/white"
+        android:textSize="20dp" />
+
+</LinearLayout>

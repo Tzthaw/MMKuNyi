@@ -8,9 +8,15 @@ import com.example.ptut.mm_kunyi.models.base.BaseModel
 import com.example.ptut.mm_kunyi.utils.EmptyError
 import com.example.ptut.mm_kunyi.utils.Error
 import com.example.ptut.mm_kunyi.vos.JobListVO
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.OnFailureListener
+import com.google.android.gms.tasks.Task
 import com.google.firebase.FirebaseApp
+import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.database.*
 import java.util.*
 
@@ -33,7 +39,7 @@ class JobListModel private constructor(context: Context):BaseModel(context){
         }
 
     }
-    fun getJobListData(mJobListLD:MutableLiveData<List<JobListVO>>,mErrorLD:MutableLiveData<Error>){
+    fun getJobListData(mErrorLD:MutableLiveData<Error>){
         mJobListDR.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val jobListArray = ArrayList<JobListVO>()
@@ -43,7 +49,6 @@ class JobListModel private constructor(context: Context):BaseModel(context){
                         jobListArray.add(jobListItem!!)
                     }
                     savePersistence(jobListArray)
-                    mJobListLD.value=jobListArray
                 }else{
                     mErrorLD.value=EmptyError("Null Data")
                 }
@@ -59,14 +64,46 @@ class JobListModel private constructor(context: Context):BaseModel(context){
         Log.e("JobList","$ids")
     }
 
+    fun getJobList():LiveData<List<JobListVO>>{
+        return mTheDB.jobListDao().getJobList()
+    }
 
     fun getJobById(jobId:Int):LiveData<JobListVO>{
         return mTheDB.jobListDao().getJobById(jobId)
     }
 
+    fun authenticateUserWithGoogleAccount(signInAccount: GoogleSignInAccount, delegate: SignInWithGoogleAccountDelegate) {
+        val credential = GoogleAuthProvider.getCredential(signInAccount.idToken, null)
+        mFirebaseAuth!!.signInWithCredential(credential)
+                .addOnCompleteListener { task ->
+                    if (!task.isSuccessful) {
+                        delegate.onFailureSignIn(task.exception!!.message!!)
+                    } else {
+                        delegate.onSuccessSignIn(signInAccount)
+                    }
+                }
+                .addOnFailureListener { e ->
+                    delegate.onFailureSignIn(e.message!!)
+                }
+    }
+
+    interface SignInWithGoogleAccountDelegate {
+        fun onSuccessSignIn(signInAccount: GoogleSignInAccount)
+        fun onFailureSignIn(msg: String)
+    }
+
+    fun isUserSignIn(): Boolean {
+        return mFirebaseUser != null
+    }
+
+    fun getUserInfo():FirebaseUser{
+        return mFirebaseUser!!
+    }
+
     init {
         mJobListDR = FirebaseDatabase.getInstance().reference
         mFirebaseAuth = FirebaseAuth.getInstance()
+        mFirebaseUser= mFirebaseAuth!!.currentUser
     }
 
 
