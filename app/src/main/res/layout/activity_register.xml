@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/color_sign_up"
+    android:background="@color/alizarin"
+    android:id="@+id/registerLayout"
     android:gravity="center"
     android:orientation="vertical"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -47,7 +46,7 @@
             style="@style/Widget.TextEdit"
             android:id="@+id/userName"
             android:hint="UserName"
-            android:inputType="textEmailAddress" />
+            android:inputType="textPersonName" />
     </android.support.design.widget.TextInputLayout>
 
     <android.support.design.widget.TextInputLayout
@@ -59,14 +58,17 @@
             style="@style/Widget.TextEdit"
             android:id="@+id/passwordEdit"
             android:hint="Password"
-            android:inputType="textEmailAddress" />
+            android:inputType="textPassword" />
     </android.support.design.widget.TextInputLayout>
 
     <Button
         android:id="@+id/registerButton"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="40dp"
+        android:paddingStart="@dimen/margin_medium"
+        android:paddingEnd="@dimen/margin_medium"
         android:layout_marginBottom="20dp"
+        style="@style/Base.TextAppearance.AppCompat.Widget.Button.Colored"
         android:background="@drawable/rectangle"
         android:fontFamily="serif"
         android:text="Register"
@@ -81,6 +83,6 @@
         android:gravity="center"
         android:text="Click here to login"
         android:textColor="@color/white"
-        android:textSize="20dp" />
+        android:textSize="@dimen/text_regular_3x" />
 
 </LinearLayout>

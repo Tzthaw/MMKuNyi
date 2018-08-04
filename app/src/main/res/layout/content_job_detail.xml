@@ -4,133 +4,144 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    app:behavior_overlapTop="40dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:showIn="@layout/activity_job_detail"
-    app:behavior_overlapTop="50dp">
+    tools:showIn="@layout/activity_job_detail">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/margin_medium"
-        android:layout_marginStart="@dimen/margin_medium"
-        android:layout_marginBottom="@dimen/margin_small"
-        android:layout_marginEnd="@dimen/margin_medium"
-        android:orientation="vertical"
-        android:background="@color/white"
-        android:elevation="4dp">
 
-        <net.aungpyaephyo.mmtextview.components.MMTextView
-            android:id="@+id/shortDescription"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/margin_small"
+            android:layout_marginEnd="@dimen/margin_medium"
             android:layout_marginStart="@dimen/margin_medium"
             android:layout_marginTop="@dimen/margin_medium"
-            android:textSize="@dimen/text_regular_3x"
-            android:textStyle="bold" />
+            android:background="@color/white"
+            android:elevation="4dp"
+            android:orientation="vertical">
 
-        <net.aungpyaephyo.mmtextview.components.MMTextView
-            android:id="@+id/fullDescription"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginTop="@dimen/margin_medium" />
+            <net.aungpyaephyo.mmtextview.components.MMTextView
+                android:id="@+id/shortDescription"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:textSize="@dimen/text_regular_3x"
+                android:textStyle="bold" />
 
-        <TableLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:layout_marginBottom="@dimen/margin_medium"
-            android:gravity="center_horizontal"
-            android:stretchColumns="2">
+            <net.aungpyaephyo.mmtextview.components.MMTextView
+                android:id="@+id/fullDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium" />
 
-            <TableRow android:gravity="start">
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:gravity="center_horizontal"
+                android:stretchColumns="2">
 
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:id="@+id/emailText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/margin_medium"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:drawablePadding="@dimen/margin_medium"
-                    android:drawableStart="@drawable/ic_email"
-                    android:gravity="start" />
+                <TableRow android:gravity="start">
 
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:id="@+id/availableText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_medium"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:drawablePadding="@dimen/margin_medium"
-                    android:drawableStart="@drawable/ic_face"
-                    android:gravity="start" />
-            </TableRow>
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/emailText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/margin_medium"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:drawablePadding="@dimen/margin_medium"
+                        android:textSize="@dimen/text_small"
+                        android:drawableStart="@drawable/ic_email"
+                        android:gravity="start" />
 
-            <TableRow>
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:id="@+id/amountText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/margin_medium"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:drawablePadding="@dimen/margin_medium"
-                    android:drawableStart="@drawable/ic_money"
-                    android:gravity="start" />
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:id="@+id/phNoText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_medium"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:drawablePadding="@dimen/margin_medium"
-                    android:drawableStart="@drawable/ic_phone"
-                    android:gravity="start" />
-            </TableRow>
-            <TableRow>
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:id="@+id/postDateText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginEnd="@dimen/margin_medium"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:drawablePadding="@dimen/margin_medium"
-                    android:drawableStart="@drawable/ic_date"
-                    android:gravity="start" />
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:id="@+id/ratingText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_medium"
-                    android:layout_marginTop="@dimen/margin_medium"
-                    android:drawablePadding="@dimen/margin_medium"
-                    android:drawableStart="@drawable/ic_rate"
-                    android:gravity="start" />
-            </TableRow>
-        </TableLayout>
-        <net.aungpyaephyo.mmtextview.components.MMTextView
-            android:id="@+id/locationText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginTop="@dimen/margin_small"
-            android:layout_marginBottom="@dimen/margin_medium"
-            android:drawableStart="@drawable/ic_location"
-            android:gravity="start" />
-    </LinearLayout>
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/availableText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_medium"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:drawablePadding="@dimen/margin_medium"
+                        android:drawableStart="@drawable/ic_face"
+                        android:gravity="start" />
+                </TableRow>
+
+                <TableRow>
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/amountText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/margin_medium"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:drawablePadding="@dimen/margin_medium"
+                        android:drawableStart="@drawable/ic_money"
+                        android:gravity="start" />
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/phNoText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_medium"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:drawablePadding="@dimen/margin_medium"
+                        android:drawableStart="@drawable/ic_phone"
+                        android:gravity="start" />
+                </TableRow>
+
+                <TableRow>
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/postDateText"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="@dimen/margin_medium"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:drawablePadding="@dimen/margin_medium"
+                        android:drawableStart="@drawable/ic_date"
+                        android:gravity="start" />
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/ratingText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_medium"
+                        android:layout_marginTop="@dimen/margin_medium"
+                        android:drawablePadding="@dimen/margin_medium"
+                        android:drawableStart="@drawable/ic_rate"
+                        android:gravity="start" />
+                </TableRow>
+            </TableLayout>
+
+            <net.aungpyaephyo.mmtextview.components.MMTextView
+                android:id="@+id/locationText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_small"
+                android:drawableStart="@drawable/ic_location"
+                android:gravity="start" />
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_small"
-            android:layout_marginStart="@dimen/margin_medium"
             android:layout_marginBottom="@dimen/margin_medium"
             android:layout_marginEnd="@dimen/margin_medium"
-            android:orientation="vertical"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_small"
             android:background="@color/white"
-            android:elevation="4dp">
+            android:elevation="4dp"
+            android:orientation="vertical">
+
             <net.aungpyaephyo.mmtextview.components.MMTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -145,49 +156,52 @@
                 android:id="@+id/relevantRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_small"
                 android:layout_marginBottom="@dimen/margin_medium"
+                android:layout_marginStart="@dimen/margin_small"
                 android:orientation="vertical" />
         </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_small"
-        android:layout_marginStart="@dimen/margin_medium"
-        android:layout_marginBottom="@dimen/margin_medium"
-        android:layout_marginEnd="@dimen/margin_medium"
-        android:orientation="vertical"
-        android:background="@color/white"
-        android:elevation="4dp">
-        <net.aungpyaephyo.mmtextview.components.MMTextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/margin_medium"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:text="Required Skill"
-            android:textSize="@dimen/text_regular_2x"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:id="@+id/requiredLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginBottom="@dimen/margin_medium"
-            android:orientation="vertical" />
-    </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_small"
-            android:layout_marginStart="@dimen/margin_medium"
             android:layout_marginBottom="@dimen/margin_medium"
             android:layout_marginEnd="@dimen/margin_medium"
-            android:orientation="vertical"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_small"
             android:background="@color/white"
-            android:elevation="4dp">
+            android:elevation="4dp"
+            android:orientation="vertical">
+
+            <net.aungpyaephyo.mmtextview.components.MMTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:text="Required Skill"
+                android:textSize="@dimen/text_regular_2x"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/requiredLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:orientation="vertical" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_small"
+            android:background="@color/white"
+            android:elevation="4dp"
+            android:orientation="vertical">
+
             <net.aungpyaephyo.mmtextview.components.MMTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -202,175 +216,190 @@
                 android:id="@+id/applicantRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_small"
                 android:layout_marginBottom="@dimen/margin_medium"
+                android:layout_marginStart="@dimen/margin_small"
                 android:orientation="vertical" />
         </LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/margin_small"
-        android:layout_marginStart="@dimen/margin_medium"
-        android:layout_marginBottom="@dimen/margin_medium"
-        android:layout_marginEnd="@dimen/margin_medium"
-        android:orientation="vertical"
-        android:background="@color/white"
-        android:elevation="4dp">
-        <net.aungpyaephyo.mmtextview.components.MMTextView
-            android:id="@+id/jobDurationTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="JobDuration"
-            android:textColor="@color/colorPrimary"
-            android:layout_marginBottom="@dimen/margin_medium"
-            android:layout_marginStart="@dimen/margin_medium"
-            android:layout_marginTop="@dimen/margin_medium"
-            android:textSize="@dimen/text_regular_2x"
-            android:textStyle="bold" />
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
-            <RelativeLayout
-                android:id="@+id/dateRange"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:id="@+id/startDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_small"
-                    android:layout_marginStart="@dimen/margin_medium"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:text="2017-8-1"
-                    android:gravity="center"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/text_regular"
-                    android:padding="@dimen/margin_small"
-                    android:drawablePadding="@dimen/margin_medium"
-                    android:drawableStart="@drawable/ic_date"/>
-
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:id="@+id/endDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_small"
-                    android:layout_marginStart="@dimen/margin_medium"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:text="2017-8-9"
-                    android:gravity="center"
-                    android:textColor="@color/colorPrimary"
-                    android:textSize="@dimen/text_regular"
-                    android:padding="@dimen/margin_small"
-                    android:drawablePadding="@dimen/margin_medium"
-                    android:drawableStart="@drawable/ic_date_range"
-                    android:layout_toEndOf="@+id/startDate"/>
-            </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/totalWorking"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/dateRange">
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:id="@+id/totalDateTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_small"
-                    android:layout_marginStart="@dimen/margin_medium"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:text="TotalWorkingDay"
-                    android:gravity="center"
-                    android:textSize="@dimen/text_regular_2x"
-                    android:textStyle="bold"
-                    android:padding="@dimen/margin_small"
-                    android:drawablePadding="@dimen/margin_medium" />
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:id="@+id/totalDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/margin_small"
-                    android:layout_marginStart="@dimen/margin_medium"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:text="2"
-                    android:gravity="center"
-                    android:textSize="@dimen/text_regular"
-                    android:padding="@dimen/margin_small"
-                    android:layout_toEndOf="@+id/totalDateTitle" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/workDayLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/totalWorking">
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:id="@+id/workTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_small"
-                    android:layout_marginStart="@dimen/margin_medium"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:text="WorkingDaysPerWeek"
-                    android:gravity="center"
-                    android:textSize="@dimen/text_regular_2x"
-                    android:textStyle="bold"
-                    android:padding="@dimen/margin_small"
-                    android:drawablePadding="@dimen/margin_medium" />
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:id="@+id/workingDay"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/margin_small"
-                    android:layout_marginStart="@dimen/margin_medium"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:text="2"
-                    android:gravity="center"
-                    android:textSize="@dimen/text_regular"
-                    android:padding="@dimen/margin_small"
-                    android:layout_toEndOf="@+id/workTitle" />
-            </RelativeLayout>
-            <RelativeLayout
-                android:id="@+id/workingHourLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/workDayLayout">
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:id="@+id/workingTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="@dimen/margin_small"
-                    android:layout_marginStart="@dimen/margin_medium"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:text="WorkingHoursPerDay"
-                    android:gravity="center"
-                    android:textSize="@dimen/text_regular_2x"
-                    android:textStyle="bold"
-                    android:padding="@dimen/margin_small"
-                    android:drawablePadding="@dimen/margin_medium" />
-                <net.aungpyaephyo.mmtextview.components.MMTextView
-                    android:id="@+id/workHour"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginBottom="@dimen/margin_small"
-                    android:layout_marginStart="@dimen/margin_medium"
-                    android:layout_marginTop="@dimen/margin_small"
-                    android:text="2"
-                    android:gravity="center"
-                    android:textSize="@dimen/text_regular"
-                    android:padding="@dimen/margin_small"
-                    android:layout_toEndOf="@+id/workingTitle" />
-            </RelativeLayout>
-        </RelativeLayout>
-    </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_small"
-            android:layout_marginStart="@dimen/margin_medium"
             android:layout_marginBottom="@dimen/margin_medium"
             android:layout_marginEnd="@dimen/margin_medium"
-            android:orientation="vertical"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_small"
             android:background="@color/white"
-            android:elevation="4dp">
+            android:elevation="4dp"
+            android:orientation="vertical">
+
+            <net.aungpyaephyo.mmtextview.components.MMTextView
+                android:id="@+id/jobDurationTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/margin_medium"
+                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginTop="@dimen/margin_medium"
+                android:text="JobDuration"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/text_regular_2x"
+                android:textStyle="bold" />
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/dateRange"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/startDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/margin_small"
+                        android:layout_marginStart="@dimen/margin_medium"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:drawablePadding="@dimen/margin_medium"
+                        android:drawableStart="@drawable/ic_date"
+                        android:gravity="center"
+                        android:padding="@dimen/margin_small"
+                        android:text="2017-8-1"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/text_regular" />
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/endDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/margin_small"
+                        android:layout_marginStart="@dimen/margin_medium"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:layout_toEndOf="@+id/startDate"
+                        android:drawablePadding="@dimen/margin_medium"
+                        android:drawableStart="@drawable/ic_date_range"
+                        android:gravity="center"
+                        android:padding="@dimen/margin_small"
+                        android:text="2017-8-9"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="@dimen/text_regular" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/totalWorking"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/dateRange">
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/totalDateTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/margin_small"
+                        android:layout_marginStart="@dimen/margin_medium"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:drawablePadding="@dimen/margin_medium"
+                        android:gravity="center"
+                        android:padding="@dimen/margin_small"
+                        android:text="TotalWorkingDay"
+                        android:textSize="@dimen/text_regular_2x"
+                        android:textStyle="bold" />
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/totalDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="@dimen/margin_small"
+                        android:layout_marginStart="@dimen/margin_medium"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:layout_toEndOf="@+id/totalDateTitle"
+                        android:gravity="center"
+                        android:padding="@dimen/margin_small"
+                        android:text="2"
+                        android:textSize="@dimen/text_regular" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/workDayLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/totalWorking">
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/workTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/margin_small"
+                        android:layout_marginStart="@dimen/margin_medium"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:drawablePadding="@dimen/margin_medium"
+                        android:gravity="center"
+                        android:padding="@dimen/margin_small"
+                        android:text="WorkingDaysPerWeek"
+                        android:textSize="@dimen/text_regular_2x"
+                        android:textStyle="bold" />
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/workingDay"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="@dimen/margin_small"
+                        android:layout_marginStart="@dimen/margin_medium"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:layout_toEndOf="@+id/workTitle"
+                        android:gravity="center"
+                        android:padding="@dimen/margin_small"
+                        android:text="2"
+                        android:textSize="@dimen/text_regular" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/workingHourLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/workDayLayout">
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/workingTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="@dimen/margin_small"
+                        android:layout_marginStart="@dimen/margin_medium"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:drawablePadding="@dimen/margin_medium"
+                        android:gravity="center"
+                        android:padding="@dimen/margin_small"
+                        android:text="WorkingHoursPerDay"
+                        android:textSize="@dimen/text_regular_2x"
+                        android:textStyle="bold" />
+
+                    <net.aungpyaephyo.mmtextview.components.MMTextView
+                        android:id="@+id/workHour"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="@dimen/margin_small"
+                        android:layout_marginStart="@dimen/margin_medium"
+                        android:layout_marginTop="@dimen/margin_small"
+                        android:layout_toEndOf="@+id/workingTitle"
+                        android:gravity="center"
+                        android:padding="@dimen/margin_small"
+                        android:text="2"
+                        android:textSize="@dimen/text_regular" />
+                </RelativeLayout>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_medium"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_small"
+            android:background="@color/white"
+            android:elevation="4dp"
+            android:orientation="vertical">
+
             <net.aungpyaephyo.mmtextview.components.MMTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -385,20 +414,22 @@
                 android:id="@+id/interestedRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_small"
                 android:layout_marginBottom="@dimen/margin_medium"
+                android:layout_marginStart="@dimen/margin_small"
                 android:orientation="vertical" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_small"
-            android:layout_marginStart="@dimen/margin_medium"
             android:layout_marginBottom="@dimen/margin_medium"
             android:layout_marginEnd="@dimen/margin_medium"
-            android:orientation="vertical"
+            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginTop="@dimen/margin_small"
             android:background="@color/white"
-            android:elevation="4dp">
+            android:elevation="4dp"
+            android:orientation="vertical">
+
             <net.aungpyaephyo.mmtextview.components.MMTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -413,11 +444,20 @@
                 android:id="@+id/viewedRecycler"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_small"
                 android:layout_marginBottom="@dimen/margin_medium"
+                android:layout_marginStart="@dimen/margin_small"
                 android:orientation="vertical" />
         </LinearLayout>
 
+        <Button
+            android:id="@+id/apply"
+            style="@style/Base.TextAppearance.AppCompat.Widget.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:text="Apply for this job"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_regular_2x" />
     </LinearLayout>
 
 

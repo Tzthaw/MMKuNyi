@@ -35,6 +35,7 @@
     <color name="color_label">#ededed</color>
     <color name="white_transparent">#fafafa</color>
     <color name="color_input_hint">#FFF</color>
+    <color name="selected">#56bdc3c7</color>
     <color name="color_text_highlight">#fafafa</color>
     <color name="color_text">#FFF</color>
     <color name="md_500_bluegrey">#607d8b</color>

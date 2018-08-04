@@ -9,7 +9,10 @@ class JobDetailPresenter:BasePresenter<JobDetailView>(){
     override fun initPresenter(mView: JobDetailView) {
         super.initPresenter(mView)
     }
-    fun onJobById(jobId:Int): LiveData<JobListVO> {
+    fun onNotifyJobById(jobId:Int): LiveData<JobListVO> {
         return JobListModel.getInstance().getJobById(jobId)
+    }
+    fun onNotifyApply(jobId:String){
+        JobListModel.getInstance().saveApplicantUser(jobId)
     }
 }

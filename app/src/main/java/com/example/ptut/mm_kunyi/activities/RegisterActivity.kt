@@ -1,42 +1,70 @@
 package com.example.ptut.mm_kunyi.activities
 
 import android.app.ProgressDialog
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.view.View
+import android.widget.Toast
 import com.example.ptut.mm_kunyi.R
+import com.example.ptut.mm_kunyi.activities.base.BaseActivity
+import com.example.ptut.mm_kunyi.utils.AppConstants
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_register.*
 
-class RegisterActivity : AppCompatActivity() {
-    lateinit var auth: FirebaseAuth
-
+class RegisterActivity : BaseActivity(), View.OnClickListener {
+    lateinit var mDatabase: DatabaseReference
+    var mFirebaseUser:FirebaseUser?=null
+    companion object {
+        fun newIntent(context: Context): Intent {
+            return Intent(context, RegisterActivity::class.java)
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
-        auth = FirebaseAuth.getInstance()
-        checkEmpty()
-
+        registerButton.setOnClickListener(this)
     }
 
-    fun checkEmpty(){
-        var user = userName.text.toString()
-        var pass = passwordEdit.text.toString()
-        var mail = email.text.toString()
+    override fun onStart() {
+        super.onStart()
+        mDatabase = FirebaseDatabase.getInstance().reference
+        mFirebaseUser=mAuth.currentUser
+    }
 
-        if (user == "") {
-            userName.error = "can't be blank"
-        } else if (pass == "") {
-            passwordEdit.error = "can't be blank"
-        } else if (!user.matches("[A-Za-z0-9]+".toRegex())) {
-            userName.error = "only alphabet or number allowed"
-        } else if (user.length < 5) {
-            userName.error = "at least 5 characters long"
-        } else if (pass.length < 5) {
-            passwordEdit.error = "at least 5 characters long"
+
+    override fun onClick(v: View?) {
+        when(v!!.id){
+            R.id.login->startActivity(LoginActivity.newIntent(applicationContext))
+            R.id.registerButton->  registerUser()
+        }
+    }
+
+    private fun registerUser() {
+        var nameTxt = userName.text.toString()
+        var passwordTxt = passwordEdit.text.toString()
+        var emailTxt = email.text.toString()
+        if (!emailTxt.isEmpty() && !passwordTxt.isEmpty() && !nameTxt.isEmpty()) {
+            mAuth.createUserWithEmailAndPassword(emailTxt, passwordTxt).addOnCompleteListener(this) {
+                if (it.isSuccessful) {
+                    val uid = mFirebaseUser!!.uid
+                    val map: HashMap<String, Any> = hashMapOf(
+                            "username" to nameTxt,
+                            "email" to emailTxt,
+                            "password" to passwordTxt
+                    )
+                    mDatabase.child(AppConstants.KUNYI_USER_DR).child(uid).setValue(map)
+                    startActivity(LoginActivity.newIntent(applicationContext))
+                } else {
+                    Toast.makeText(this, "Error registering, try again later :(", Toast.LENGTH_LONG).show()
+                }
+            }
         } else {
-            val pd = ProgressDialog(applicationContext)
-            pd.setMessage("Loading...")
-            pd.show()
+            Toast.makeText(this, "Please fill up the Credentials :|", Toast.LENGTH_LONG).show()
         }
     }
 }

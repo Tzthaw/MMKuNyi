@@ -2,6 +2,7 @@ package com.example.ptut.mm_kunyi.activities
 
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.support.design.widget.NavigationView
@@ -13,6 +14,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.ImageView
+import android.widget.RelativeLayout
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.example.ptut.mm_kunyi.R
@@ -35,6 +37,7 @@ import com.padcmyanmar.mmnews.kotlin.components.SmartScrollListener
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.app_bar_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import kotlinx.android.synthetic.main.nav_header_main.*
 
 
 class JobListActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, JobListView,
@@ -43,7 +46,12 @@ class JobListActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
     private lateinit var jobListAdapter: JobListAdapters
     private var mSmartScrollListener: SmartScrollListener? = null
     private var mGoogleApiClient: GoogleApiClient? = null
-    private var mFirebaseUser: FirebaseUser? = null
+
+    companion object {
+        fun newIntent(context: Context): Intent {
+            return Intent(context, JobListActivity::class.java)
+        }
+    }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -59,9 +67,7 @@ class JobListActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
             swipeRefreshLayout.isRefreshing = false
             jobListAdapter.setNewData(it as MutableList<JobListVO>)
         })
-        if (mFirebaseUser != null) {
-            navigateData(mFirebaseUser!!)
-        }
+
     }
 
     private fun setUpUiComponent() {
@@ -210,14 +216,7 @@ class JobListActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
     }
 
     private fun startPostJobActivity() {
-        mFirebaseUser =FirebaseAuth.getInstance().currentUser
-        if(jobListPresenter.isGoogleSignIn()){
-            startActivity(PostJobActivity.newIntent(applicationContext))
-        }else{
-            if (mFirebaseUser != null) {
-                navigateData(mFirebaseUser!!)
-            }
-        }
+        startActivity(PostJobActivity.newIntent(applicationContext))
 
     }
 }

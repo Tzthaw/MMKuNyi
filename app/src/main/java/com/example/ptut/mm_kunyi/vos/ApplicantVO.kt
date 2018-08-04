@@ -1,11 +1,17 @@
 package com.example.ptut.mm_kunyi.vos
 
+import android.R.attr.author
+import com.google.firebase.database.Exclude
+
+
+
 data class ApplicantVO(
-        val seekerName: String? = null,
-        val canLowerOfferAmount: Boolean? = null,
-        val appliedDate: String? = null,
-        val seekerId: Int? = null,
-        val seekerSkill: List<SeekerSkillIVO?>? = null,
-        val seekerProfilePicUrl: String? = null,
-        val whyShouldHire: List<WhyShouldHireVO?>? = null
-):BaseVO()
+        var seekerName: String? = null,
+        var canLowerOfferAmount: Boolean? = null,
+        var appliedDate: String? = null,
+        var seekerId: Int? = null,
+        var seekerSkill: List<SeekerSkillIVO?>? = null,
+        var seekerProfilePicUrl: String? = null,
+        var whyShouldHire: List<WhyShouldHireVO?>? = null
+)
+

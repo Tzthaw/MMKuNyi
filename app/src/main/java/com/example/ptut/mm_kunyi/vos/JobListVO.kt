@@ -11,6 +11,7 @@ import com.example.ptut.mm_kunyi.persistence.typeconverter.*
 		ViewedTypeConverter::class,RequiredSkillTypeConverter::class,InterestedTypeConverter::class,
 		JobTagTypeConverter::class)
 data class JobListVO(
+		var jobId:String?=null,
 		var images: List<String>? = null,
 		@PrimaryKey
 		var jobPostId: Int? = null,
