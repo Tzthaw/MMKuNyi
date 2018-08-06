@@ -39,4 +39,5 @@
     <color name="color_text_highlight">#fafafa</color>
     <color name="color_text">#FFF</color>
     <color name="md_500_bluegrey">#607d8b</color>
+    <color name="blue">#6200EE</color>
 </resources>

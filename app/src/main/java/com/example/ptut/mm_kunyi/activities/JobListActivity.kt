@@ -42,11 +42,12 @@ import kotlinx.android.synthetic.main.nav_header_main.*
 
 class JobListActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedListener, JobListView,
         GoogleApiClient.OnConnectionFailedListener {
+
+
     private lateinit var jobListPresenter: JobListPresenter
     private lateinit var jobListAdapter: JobListAdapters
     private var mSmartScrollListener: SmartScrollListener? = null
     private var mGoogleApiClient: GoogleApiClient? = null
-
     companion object {
         fun newIntent(context: Context): Intent {
             return Intent(context, JobListActivity::class.java)
@@ -83,7 +84,8 @@ class JobListActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
 
     private fun navigateTool() {
         fab.setOnClickListener {
-            if (jobListPresenter.isGoogleSignIn()) {
+            if (mFirebaseUser!=null) {
+                navigateData(mFirebaseUser!!)
                 startPostJobActivity()
             } else {
                 Snackbar.make(jobRecycler, "Please Sign in with Your google account", Snackbar.LENGTH_LONG).setAction("Sign-In") { signInWithGoogle() }.show()
@@ -217,6 +219,8 @@ class JobListActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
 
     private fun startPostJobActivity() {
         startActivity(PostJobActivity.newIntent(applicationContext))
-
+    }
+    override fun setLikeCount(jobId: String, likeId: Int) {
+        JobListModel.getInstance().addLike("$jobId","$likeId" )
     }
 }

@@ -9,16 +9,14 @@ import com.example.ptut.mm_kunyi.models.base.BaseModel
 import com.example.ptut.mm_kunyi.utils.AppConstants
 import com.example.ptut.mm_kunyi.utils.EmptyError
 import com.example.ptut.mm_kunyi.utils.Error
-import com.example.ptut.mm_kunyi.vos.ApplicantVO
-import com.example.ptut.mm_kunyi.vos.JobListVO
-import com.example.ptut.mm_kunyi.vos.SeekerSkillIVO
-import com.example.ptut.mm_kunyi.vos.WhyShouldHireVO
+import com.example.ptut.mm_kunyi.vos.*
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.database.*
 import java.util.*
+import kotlin.collections.ArrayList
 
 class JobListModel private constructor(context: Context) : BaseModel(context) {
     companion object {
@@ -40,6 +38,7 @@ class JobListModel private constructor(context: Context) : BaseModel(context) {
             INSTANCE = JobListModel(context)
         }
 
+
     }
 
     fun getJobListData(mErrorLD: MutableLiveData<Error>) {
@@ -51,6 +50,9 @@ class JobListModel private constructor(context: Context) : BaseModel(context) {
                     for (snapshot in dataSnapshot.children) {
                         val jobListItem = snapshot.getValue<JobListVO>(JobListVO::class.java)
                         jobListItem!!.jobId=snapshot.ref.key
+                        if(jobListItem.like==null){
+                            jobListItem.like=ArrayList()
+                        }
                         Log.e("key",jobListItem.jobId)
                         jobListArray.add(jobListItem)
                     }
@@ -66,27 +68,6 @@ class JobListModel private constructor(context: Context) : BaseModel(context) {
         })
     }
 
-    fun saveApplicantUser(jobId: String) {
-        if(isUserSignIn()){
-            var mJobListDR = mDatabaseReference.child(AppConstants.KUNYI_INFO_DR)
-            var applicantVO = ApplicantVO()
-            applicantVO.appliedDate = Calendar.getInstance().time.toString()
-            applicantVO.seekerName = "Thawzintoe"
-            applicantVO.seekerProfilePicUrl = "abc"
-            val cineIndustryRef = mJobListDR.child(jobId).child("applicant").push()
-            val map: HashMap<String, Any> = hashMapOf(
-                    "seekerName" to "Thawzintoe",
-                    "canLowerOfferAmount" to "false",
-                    "appliedDate" to applicantVO.appliedDate!!,
-                    "seekerId" to "15",
-                    "seekerSkill" to ArrayList<SeekerSkillIVO>(),
-                    "seekerProfilePicUrl" to applicantVO.seekerProfilePicUrl!!,
-                    "whyShouldHire" to ArrayList<WhyShouldHireVO>()
-            )
-            cineIndustryRef.updateChildren(map as Map<String, Any>)
-        }
-
-    }
 
 
     private fun savePersistence(jobList: List<JobListVO>) {
@@ -135,11 +116,40 @@ class JobListModel private constructor(context: Context) : BaseModel(context) {
         return mFirebaseUser!!
     }
 
+    fun applyJob(jobId:String,applicantId:String,callback: ApplyCallBack){
+        var applicant:ApplicantVO= ApplicantVO.initApplicant(mFirebaseUser!!.displayName,
+                mFirebaseUser!!.photoUrl.toString())
+        var mJobInfoDR= mDatabaseReference.child("mmkunyiInfo")
+        mJobInfoDR.child(jobId).child("applicant")
+                .child(applicantId).setValue(applicant)
+        callback.onApplySuccess("Success Apply Your Information!!")
+    }
+
+    fun addLike(jobId:String,likeId:String){
+        if(mFirebaseUser!=null){
+            var like:LikeVO= LikeVO.initLike(mFirebaseUser!!.uid)
+            var mJobInfoDR= mDatabaseReference.child("mmkunyiInfo")
+            mJobInfoDR.child(jobId).child("like")
+                    .child(likeId).setValue(like)
+        }
+
+    }
+    fun addUnLike(jobId:String,likeId:String){
+        var like:LikeVO= LikeVO.initLike(mFirebaseUser!!.uid)
+        var mJobInfoDR= mDatabaseReference.child("mmkunyiInfo")
+        mJobInfoDR.child(jobId).child("like")
+                .child(likeId).removeValue()
+    }
+
     init {
         mDatabaseReference = FirebaseDatabase.getInstance().reference
         mFirebaseAuth = FirebaseAuth.getInstance()
         mFirebaseUser = mFirebaseAuth.currentUser
     }
 
+
+    interface ApplyCallBack{
+        fun onApplySuccess(msg:String)
+    }
 
 }

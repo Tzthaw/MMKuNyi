@@ -46,4 +46,12 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="AppDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:lineSpacingMultiplier">1.2</item>
+    </style>
+
+    <style name="AppTheme.BlueButton">
+        <item name="colorControlHighlight">@color/selected</item>
+    </style>
+
 </resources>

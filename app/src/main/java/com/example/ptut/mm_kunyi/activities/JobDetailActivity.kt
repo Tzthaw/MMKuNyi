@@ -1,32 +1,34 @@
 package com.example.ptut.mm_kunyi.activities
 
 import android.annotation.SuppressLint
+import android.app.ProgressDialog
 import android.arch.lifecycle.Observer
 import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.support.design.widget.Snackbar
 import android.support.v7.widget.LinearLayoutManager
+import android.text.Html
+import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import com.example.ptut.mm_kunyi.R
 import com.example.ptut.mm_kunyi.activities.base.BaseActivity
 import com.example.ptut.mm_kunyi.adapters.ApplicantAdapter
 import com.example.ptut.mm_kunyi.adapters.InterestedAdapter
 import com.example.ptut.mm_kunyi.adapters.RelevantAdapter
 import com.example.ptut.mm_kunyi.adapters.ViewedAdapter
+import com.example.ptut.mm_kunyi.models.JobListModel
 import com.example.ptut.mm_kunyi.mvp.presenters.JobDetailPresenter
 import com.example.ptut.mm_kunyi.mvp.views.JobDetailView
 import com.example.ptut.mm_kunyi.utils.AppConstants
 import com.example.ptut.mm_kunyi.vos.*
-import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.activity_job_detail.*
 import kotlinx.android.synthetic.main.content_job_detail.*
-import java.util.*
-import kotlin.collections.ArrayList
 
 
 @SuppressLint("Registered")
@@ -38,8 +40,11 @@ class JobDetailActivity : BaseActivity(), JobDetailView, View.OnClickListener {
     private lateinit var viewedAdapter: ViewedAdapter
     private lateinit var relevantAdapter: RelevantAdapter
     private lateinit var mDatabase: DatabaseReference
-    private var mFirebaseUser: FirebaseUser? = null
+
     private var jobListVO: JobListVO? = null
+    private var jobId: Int? = null
+    private var applicantId: String? = null
+    private lateinit var mProgressDialog: ProgressDialog
 
     companion object {
         fun newIntent(context: Context, jobId: Int): Intent {
@@ -52,16 +57,24 @@ class JobDetailActivity : BaseActivity(), JobDetailView, View.OnClickListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_job_detail)
+        setSupportActionBar(toolbar)
 
-        val id: Int = intent.getIntExtra(AppConstants.JOB_ID, 0)
+        if(supportActionBar!=null){
+            supportActionBar!!.title=""
+            supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        }
+
+        jobId = intent.getIntExtra(AppConstants.JOB_ID, 0)
+        Log.e("jobid", "$jobId")
 
         jobListPresenter = ViewModelProviders.of(this).get(JobDetailPresenter::class.java)
         jobListPresenter.initPresenter(this)
-        jobListPresenter.onNotifyJobById(id).observe(this, Observer<JobListVO> {
+        jobListPresenter.onNotifyJobById(jobId!!).observe(this, Observer<JobListVO> {
             jobListVO = it
+            applicantId = jobListVO!!.applicant!!.size.toString()
             setUpUiComponent(it as JobListVO)
         })
-
+        apply.setOnClickListener(this)
     }
 
     @SuppressLint("SetTextI18n")
@@ -87,7 +100,7 @@ class JobDetailActivity : BaseActivity(), JobDetailView, View.OnClickListener {
         interestedView(jobListVO)
         viewed(jobListVO)
         relevantView(jobListVO)
-        apply.setOnClickListener(this)
+
     }
 
     private fun requiredSkill(lparams: LinearLayout.LayoutParams, jobListVO: JobListVO) {
@@ -150,13 +163,42 @@ class JobDetailActivity : BaseActivity(), JobDetailView, View.OnClickListener {
     override fun onStart() {
         super.onStart()
         mDatabase = FirebaseDatabase.getInstance().reference
-        mFirebaseUser = mAuth.currentUser
     }
 
     override fun onClick(v: View?) {
-//        jobListPresenter.onNotifyApply(jobListVO!!.jobId!!)
+        when(v!!.id){
+            R.id.apply->{
+                showProgressDialogInfinite("Apply Request")
+                if (mFirebaseUser != null) {
+                    jobId = jobId!!.minus(1)
+                    JobListModel.getInstance().applyJob("$jobId", applicantId!!,
+                            object : JobListModel.ApplyCallBack {
+                                override fun onApplySuccess(msg: String) {
+                                    dismissProgressDialog()
+                                    Snackbar.make(coordinatorLayout, msg, Snackbar.LENGTH_SHORT).show()
+                                }
+                            })
+                } else {
+                    Snackbar.make(coordinatorLayout, "Sign in With Google Account", Snackbar.LENGTH_SHORT).show()
+                }
+            }
+        }
+
 
     }
 
+    private fun showProgressDialogInfinite(msg: String) {
+        mProgressDialog = ProgressDialog(this, R.style.AppDialog)
+        mProgressDialog.setMessage(Html.fromHtml(msg))
+        if (!mProgressDialog.isShowing()) {
+            mProgressDialog.setCancelable(false)
+            mProgressDialog.show()
+        }
+    }
 
+    fun dismissProgressDialog() {
+        if (mProgressDialog != null && mProgressDialog.isShowing()) {
+            mProgressDialog.dismiss()
+        }
+    }
 }

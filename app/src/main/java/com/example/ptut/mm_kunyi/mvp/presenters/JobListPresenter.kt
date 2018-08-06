@@ -9,6 +9,7 @@ import com.example.ptut.mm_kunyi.vos.JobListVO
 import com.google.firebase.auth.FirebaseUser
 
 class JobListPresenter : BasePresenter<JobListView>(), onTapJobList {
+
     override fun initPresenter(mView: JobListView) {
         super.initPresenter(mView)
     }
@@ -35,4 +36,8 @@ class JobListPresenter : BasePresenter<JobListView>(), onTapJobList {
     fun onNotifyLogin():FirebaseUser{
         return JobListModel.getInstance().getUserInfo()
     }
+    override fun tapLike(jobId: String, likeId: Int) {
+        mView.setLikeCount(jobId,likeId)
+    }
+
 }

@@ -2,25 +2,34 @@
 <com.example.ptut.healthcare.component.EmptyViewPod xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ededed">
+    android:background="@color/white">
 
     <ImageView
         android:id="@+id/ivEmpty"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        android:src="@drawable/empty_list"
+        android:src="@drawable/sampletwo"
         android:layout_centerInParent="true"
         />
+    <net.aungpyaephyo.mmtextview.components.MMTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Oops No Data!!"
+        android:textStyle="bold"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/ivEmpty"/>
 
     <TextView
         android:id="@+id/tvEmpty"
-        android:layout_width="wrap_content"
+        android:layout_width="230dp"
         android:layout_height="wrap_content"
-        android:text="No Data"
+        android:text="You have no data to show this content data"
         android:textStyle="bold"
-        android:textSize="@dimen/text_heading_2x"
+        android:gravity="center_horizontal"
+        android:textSize="@dimen/text_regular"
         android:layout_below="@id/ivEmpty"
         android:textColor="@color/silver"
+        android:layout_marginBottom="@dimen/margin_medium"
         android:layout_marginTop="@dimen/margin_large"
         android:layout_centerHorizontal="true"
         />
@@ -32,9 +41,13 @@
         android:layout_below="@+id/tvEmpty"
         android:layout_centerHorizontal="true"
         android:textColor="@color/white"
-        android:padding="@dimen/margin_medium"
+        android:textStyle="bold"
+        android:paddingLeft="@dimen/margin_large"
+        android:paddingEnd="@dimen/margin_large"
+        android:paddingTop="@dimen/margin_medium"
+        android:paddingBottom="@dimen/margin_medium"
         android:layout_marginTop="@dimen/margin_medium"
-        android:background="@color/colorPrimary"/>
+        android:background="@color/blue"/>
 
 
 </com.example.ptut.healthcare.component.EmptyViewPod>

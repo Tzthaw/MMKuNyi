@@ -17,8 +17,8 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="@dimen/margin_small"
-            android:layout_marginEnd="@dimen/margin_medium"
-            android:layout_marginStart="@dimen/margin_medium"
+            android:layout_marginEnd="@dimen/margin_small"
+            android:layout_marginStart="@dimen/margin_small"
             android:layout_marginTop="@dimen/margin_medium"
             android:background="@color/white"
             android:elevation="4dp"
@@ -26,10 +26,11 @@
 
             <net.aungpyaephyo.mmtextview.components.MMTextView
                 android:id="@+id/shortDescription"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginBottom="@dimen/margin_medium"
                 android:layout_marginTop="@dimen/margin_medium"
+                android:gravity="center_horizontal"
                 android:textSize="@dimen/text_regular_3x"
                 android:textStyle="bold" />
 
@@ -37,98 +38,112 @@
                 android:id="@+id/fullDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/margin_medium"
-                android:layout_marginTop="@dimen/margin_medium" />
+                android:layout_margin="@dimen/margin_medium"
+                android:background="@drawable/border_bg"
+                android:padding="@dimen/margin_medium"
+                android:textSize="@dimen/text_regular_2x"
+                android:textColor="@color/md_500_bluegrey" />
 
-            <TableLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_medium"
-                android:layout_marginStart="@dimen/margin_medium"
+                android:layout_marginStart="@dimen/margin_medium_2"
                 android:layout_marginTop="@dimen/margin_medium"
-                android:gravity="center_horizontal"
+                android:gravity="start"
+                android:orientation="vertical"
                 android:stretchColumns="2">
 
-                <TableRow android:gravity="start">
 
-                    <net.aungpyaephyo.mmtextview.components.MMTextView
-                        android:id="@+id/emailText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/margin_medium"
-                        android:layout_marginTop="@dimen/margin_medium"
-                        android:drawablePadding="@dimen/margin_medium"
-                        android:textSize="@dimen/text_small"
-                        android:drawableStart="@drawable/ic_email"
-                        android:gravity="start" />
+                <net.aungpyaephyo.mmtextview.components.MMTextView
+                    android:id="@+id/emailText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:drawablePadding="@dimen/margin_medium"
+                    android:drawableStart="@drawable/ic_email"
+                    android:gravity="start"
+                    android:textColor="@color/md_500_bluegrey"
+                    android:textSize="@dimen/text_regular" />
 
-                    <net.aungpyaephyo.mmtextview.components.MMTextView
-                        android:id="@+id/availableText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/margin_medium"
-                        android:layout_marginTop="@dimen/margin_medium"
-                        android:drawablePadding="@dimen/margin_medium"
-                        android:drawableStart="@drawable/ic_face"
-                        android:gravity="start" />
-                </TableRow>
+                <net.aungpyaephyo.mmtextview.components.MMTextView
+                    android:id="@+id/availableText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_medium"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:drawablePadding="@dimen/margin_medium"
+                    android:drawableStart="@drawable/ic_face"
+                    android:gravity="start"
+                    android:textSize="@dimen/text_regular"
+                    android:textColor="@color/md_500_bluegrey" />
 
-                <TableRow>
 
-                    <net.aungpyaephyo.mmtextview.components.MMTextView
-                        android:id="@+id/amountText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/margin_medium"
-                        android:layout_marginTop="@dimen/margin_medium"
-                        android:drawablePadding="@dimen/margin_medium"
-                        android:drawableStart="@drawable/ic_money"
-                        android:gravity="start" />
+                <net.aungpyaephyo.mmtextview.components.MMTextView
+                    android:id="@+id/amountText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:drawablePadding="@dimen/margin_medium"
+                    android:drawableStart="@drawable/ic_money"
+                    android:gravity="start"
+                    android:textSize="@dimen/text_regular"
+                    android:textColor="@color/md_500_bluegrey" />
 
-                    <net.aungpyaephyo.mmtextview.components.MMTextView
-                        android:id="@+id/phNoText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/margin_medium"
-                        android:layout_marginTop="@dimen/margin_medium"
-                        android:drawablePadding="@dimen/margin_medium"
-                        android:drawableStart="@drawable/ic_phone"
-                        android:gravity="start" />
-                </TableRow>
+                <net.aungpyaephyo.mmtextview.components.MMTextView
+                    android:id="@+id/phNoText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_medium"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:drawablePadding="@dimen/margin_medium"
+                    android:drawableStart="@drawable/ic_phone"
+                    android:gravity="start"
+                    android:textSize="@dimen/text_regular"
+                    android:textColor="@color/md_500_bluegrey" />
 
-                <TableRow>
 
-                    <net.aungpyaephyo.mmtextview.components.MMTextView
-                        android:id="@+id/postDateText"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginEnd="@dimen/margin_medium"
-                        android:layout_marginTop="@dimen/margin_medium"
-                        android:drawablePadding="@dimen/margin_medium"
-                        android:drawableStart="@drawable/ic_date"
-                        android:gravity="start" />
+                <net.aungpyaephyo.mmtextview.components.MMTextView
+                    android:id="@+id/postDateText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_medium"
+                    android:layout_marginEnd="@dimen/margin_medium"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:drawablePadding="@dimen/margin_medium"
+                    android:drawableStart="@drawable/ic_date"
+                    android:gravity="start"
+                    android:textSize="@dimen/text_regular"
+                    android:textColor="@color/md_500_bluegrey" />
 
-                    <net.aungpyaephyo.mmtextview.components.MMTextView
-                        android:id="@+id/ratingText"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/margin_medium"
-                        android:layout_marginTop="@dimen/margin_medium"
-                        android:drawablePadding="@dimen/margin_medium"
-                        android:drawableStart="@drawable/ic_rate"
-                        android:gravity="start" />
-                </TableRow>
-            </TableLayout>
+                <net.aungpyaephyo.mmtextview.components.MMTextView
+                    android:id="@+id/ratingText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_medium"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:drawablePadding="@dimen/margin_medium"
+                    android:drawableStart="@drawable/ic_rate"
+                    android:gravity="start"
+                    android:textSize="@dimen/text_regular"
+                    android:textColor="@color/md_500_bluegrey" />
+                <net.aungpyaephyo.mmtextview.components.MMTextView
+                    android:id="@+id/locationText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/margin_medium"
+                    android:layout_marginTop="@dimen/margin_medium"
+                    android:textColor="@color/md_500_bluegrey"
+                    android:drawableStart="@drawable/ic_location"
+                    android:textSize="@dimen/text_regular"
+                    android:gravity="start" />
+            </LinearLayout>
 
-            <net.aungpyaephyo.mmtextview.components.MMTextView
-                android:id="@+id/locationText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/margin_medium"
-                android:layout_marginStart="@dimen/margin_medium"
-                android:layout_marginTop="@dimen/margin_small"
-                android:drawableStart="@drawable/ic_location"
-                android:gravity="start" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -451,13 +466,17 @@
 
         <Button
             android:id="@+id/apply"
-            style="@style/Base.TextAppearance.AppCompat.Widget.Button.Colored"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/colorPrimary"
+            android:layout_height="match_parent"
+            android:backgroundTint="@color/colorPrimary"
+            android:clickable="true"
+            android:foreground="?android:attr/selectableItemBackground"
             android:text="Apply for this job"
             android:textColor="@color/white"
-            android:textSize="@dimen/text_regular_2x" />
+            android:textSize="@dimen/text_regular_2x"
+            android:theme="@style/AppTheme.BlueButton" />
+
+
     </LinearLayout>
 
 

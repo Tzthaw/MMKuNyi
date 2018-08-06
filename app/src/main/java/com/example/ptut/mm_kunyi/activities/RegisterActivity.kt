@@ -18,7 +18,6 @@ import kotlinx.android.synthetic.main.activity_register.*
 
 class RegisterActivity : BaseActivity(), View.OnClickListener {
     lateinit var mDatabase: DatabaseReference
-    var mFirebaseUser:FirebaseUser?=null
     companion object {
         fun newIntent(context: Context): Intent {
             return Intent(context, RegisterActivity::class.java)
@@ -33,7 +32,6 @@ class RegisterActivity : BaseActivity(), View.OnClickListener {
     override fun onStart() {
         super.onStart()
         mDatabase = FirebaseDatabase.getInstance().reference
-        mFirebaseUser=mAuth.currentUser
     }
 
 

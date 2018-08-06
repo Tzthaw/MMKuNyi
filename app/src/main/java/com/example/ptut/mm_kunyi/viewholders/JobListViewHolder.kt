@@ -12,7 +12,7 @@ class JobListViewHolder(itemView: View, private val tapJobList: onTapJobList) : 
     private lateinit var jobListVO: JobListVO
     @SuppressLint("SetTextI18n")
     override fun setData(data: JobListVO) {
-        jobListVO=data
+        jobListVO = data
         itemView.shortDesc.text = data.shortDesc
         itemView.fullDesc.text = data.fullDesc
         itemView.email.text = data.email
@@ -21,15 +21,21 @@ class JobListViewHolder(itemView: View, private val tapJobList: onTapJobList) : 
         itemView.postDate.text = "${data.postedDate} to ${data.postClosedDate}"
         itemView.rating.text = data.makeMoneyRating.toString()
         itemView.applicant.text = "Applied~${data.applicant!!.count()}"
-        itemView.viewed.text="Viewed~${data.viewed!!.count()}"
-        itemView.available.text="${data.availablePostCount}-Need"
+        itemView.viewed.text = "Viewed~${data.viewed!!.count()}"
+        itemView.available.text = "${data.availablePostCount}-Need"
         itemView.like.setOnClickListener(this)
+
+        itemView.likeCount.text = "${data.like!!.size}"
         itemView.comment.setOnClickListener(this)
         itemView.share.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
-        tapJobList.tapJobList(jobListVO)
+        when(v!!.id){
+            R.id.card-> tapJobList.tapJobList(jobListVO)
+            R.id.like -> tapJobList.tapLike("${jobListVO.jobId}",jobListVO.like!!.size)
+        }
+
     }
 
 }

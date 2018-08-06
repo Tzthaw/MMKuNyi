@@ -3,6 +3,8 @@
     package="com.example.ptut.mm_kunyi">
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
@@ -16,7 +18,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity
-            android:name=".activities.LoginActivity"
+            android:name=".activities.JobListActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,7 +29,6 @@
         <activity android:name=".activities.JobDetailActivity"/>
         <activity android:name=".activities.PostJobActivity"/>
         <activity android:name=".activities.RegisterActivity"/>
-        <activity android:name=".activities.JobListActivity"/>
     </application>
 
 </manifest>

@@ -12,7 +12,5 @@ class JobDetailPresenter:BasePresenter<JobDetailView>(){
     fun onNotifyJobById(jobId:Int): LiveData<JobListVO> {
         return JobListModel.getInstance().getJobById(jobId)
     }
-    fun onNotifyApply(jobId:String){
-        JobListModel.getInstance().saveApplicantUser(jobId)
-    }
+
 }
