@@ -2,8 +2,8 @@
 <com.example.ptut.mm_kunyi.components.pods.ProfileViewPod
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/md_500_bluegrey"
-    android:padding="@dimen/margin_large"
+    android:background="@color/alizarin"
+    android:padding="@dimen/margin_xlarge"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <com.mikhaellopez.circularimageview.CircularImageView
@@ -19,7 +19,6 @@
         android:id="@+id/seekerUserName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_medium"
         android:layout_below="@id/seekerProfileUrl"
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text="Seeker"
@@ -29,7 +28,6 @@
         android:id="@+id/seekerEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_medium"
         android:layout_below="@+id/seekerUserName"
         android:text="@string/nav_header_subtitle" />
 
@@ -38,11 +36,11 @@
         style="@style/Base.TextAppearance.AppCompat.Button"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
+        android:elevation="@dimen/cardview_default_elevation"
         android:layout_below="@id/seekerEmail"
         android:layout_marginTop="@dimen/margin_medium"
-        android:background="@color/alizarin"
+        android:background="@color/white"
         android:text="SignOut"
-        android:layout_marginStart="@dimen/margin_medium"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="@dimen/text_small" />
 </com.example.ptut.mm_kunyi.components.pods.ProfileViewPod>

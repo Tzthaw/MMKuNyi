@@ -30,6 +30,9 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_job_detail.*
 import kotlinx.android.synthetic.main.content_job_detail.*
+import com.example.ptut.mm_kunyi.R.id.toolbar
+
+
 
 
 @SuppressLint("Registered")
@@ -63,6 +66,9 @@ class JobDetailActivity : BaseActivity(), JobDetailView, View.OnClickListener {
         if(supportActionBar!=null){
             supportActionBar!!.title=""
             supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        }
+        toolbar.setNavigationOnClickListener {
+            onBackPressed()
         }
 
         jobId = intent.getIntExtra(AppConstants.JOB_ID, 0)
@@ -176,11 +182,12 @@ class JobDetailActivity : BaseActivity(), JobDetailView, View.OnClickListener {
                             object : JobListModel.ApplyCallBack {
                                 override fun onApplySuccess(msg: String) {
                                     dismissProgressDialog()
-                                    Snackbar.make(coordinatorLayout, msg, Snackbar.LENGTH_SHORT).show()
+                                    Snackbar.make(coordinatorLayout, msg, Snackbar.LENGTH_LONG).show()
                                 }
                             })
                 } else {
-                    Snackbar.make(coordinatorLayout, "Sign in With Google Account", Snackbar.LENGTH_SHORT).show()
+                    dismissProgressDialog()
+                    Snackbar.make(coordinatorLayout, "Sign in With Google Account", Snackbar.LENGTH_INDEFINITE).show()
                 }
             }
         }
