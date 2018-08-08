@@ -5,45 +5,22 @@
     android:layout_height="wrap_content"
     android:gravity="center_vertical"
     android:orientation="horizontal">
-
-    <RelativeLayout
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_marginStart="@dimen/margin_medium">
-
-        <View
-            android:layout_width="2dp"
-            android:layout_height="match_parent"
-            android:layout_centerHorizontal="true"
-            android:background="@color/midnightblue" />
-
-
-        <View
-            android:id="@+id/view1"
-            android:layout_width="@dimen/margin_medium"
-            android:layout_height="@dimen/margin_medium"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="@dimen/margin_large"
-            android:background="@drawable/dot" />
-    </RelativeLayout>
-
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingLeft="@dimen/margin_medium"
-        android:paddingRight="@dimen/margin_medium">
+        android:paddingLeft="@dimen/margin_small"
+        android:paddingRight="@dimen/margin_small">
 
         <com.mikhaellopez.circularimageview.CircularImageView
-            android:id="@+id/commentUser"
+            android:id="@+id/commentUserImage"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:layout_gravity="top"
             android:layout_marginStart="@dimen/margin_medium"
             android:layout_marginEnd="@dimen/margin_medium"
             android:layout_marginTop="@dimen/margin_medium"
-            android:src="@drawable/sample"
             app:civ_border_color="@color/colorAccent"
             app:civ_border_width="1dp" />
 
@@ -67,21 +44,14 @@
                     android:layout_height="wrap_content">
 
                     <net.aungpyaephyo.mmtextview.components.MMTextView
-                        android:id="@+id/commentUserName"
+                        android:id="@+id/commentName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="@dimen/margin_small"
-                        android:textColor="@color/md_500_bluegrey"
-                        android:textSize="@dimen/text_regular" />
 
-                    <net.aungpyaephyo.mmtextview.components.MMTextView
-                        android:id="@+id/dot"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_small"
-                        android:layout_marginRight="@dimen/margin_small"
-                        android:layout_toEndOf="@+id/commentUserName"
-                        android:text="." />
+                        android:textStyle="bold"
+                        android:textColor="@color/midnightblue"
+                        android:textSize="@dimen/text_regular_2x" />
 
                     <net.aungpyaephyo.mmtextview.components.MMTextView
                         android:id="@+id/commentDate"
@@ -89,9 +59,10 @@
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginBottom="@dimen/margin_small"
-                        android:layout_toEndOf="@+id/dot"
+
+                        android:layout_below="@+id/commentName"
                         android:textColor="@color/md_500_bluegrey"
-                        android:textSize="@dimen/text_small" />
+                        android:textSize="@dimen/text_smaller" />
 
                 </RelativeLayout>
 
@@ -100,6 +71,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:lineSpacingExtra="@dimen/margin_small"
+                    android:layout_marginTop="@dimen/margin_small"
+                    android:textStyle="bold"
                     android:textColor="@color/md_500_bluegrey"
                     android:textSize="@dimen/text_regular" />
 

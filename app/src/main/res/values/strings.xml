@@ -6,4 +6,8 @@
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+
+    <string name="invitation_title">Join MMKuNyi</string>
+    <string name="invitation_message">Be informed on the news that informs JobList</string>
+    <string name="invitation_cta">I want to join</string>
 </resources>

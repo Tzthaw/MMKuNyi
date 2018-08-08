@@ -24,6 +24,10 @@ import kotlinx.android.synthetic.main.activity_login.*
 import kotlinx.android.synthetic.main.content_main.*
 
 class LoginActivity : BaseActivity(), View.OnClickListener,JobListView {
+    override fun tapComment(jobId: String) {
+
+    }
+
     override fun setLikeCount(jobId: String, likeId: Int) {
     }
 

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.ptut.mm_kunyi.components.pods.LoginViewPod
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="@dimen/margin_medium"
+    android:background="@color/md_500_bluegrey"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <ImageView
+        android:id="@+id/photo"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:contentDescription="@string/nav_header_desc"
+        android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:layout_centerInParent="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_person" />
+    <ImageView
+        android:id="@+id/googleLogin"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/photo"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:src="@drawable/login_with_google_large"
+        android:layout_centerInParent="true" />
+</com.example.ptut.mm_kunyi.components.pods.LoginViewPod>

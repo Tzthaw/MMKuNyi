@@ -1,20 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/commentRootLayout"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
+
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="8">
+        android:layout_weight="8"
+        tools:ignore="NotSibling">
+
+        <include
+            android:id="@+id/commentEmptyLayout"
+            layout="@layout/view_pod_empty"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
         <com.padcmyanmar.mmnews.kotlin.components.SmartRecyclerView
             android:id="@+id/commentRecycler"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-        <com.example.ptut.healthcare.component.EmptyViewPod
-            android:id="@+id/commentEmptyLayout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
+
+
     </RelativeLayout>
+
+
     <include layout="@layout/comment_view_pod" />
 </LinearLayout>

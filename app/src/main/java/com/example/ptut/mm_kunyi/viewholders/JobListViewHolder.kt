@@ -19,21 +19,24 @@ class JobListViewHolder(itemView: View, private val tapJobList: onTapJobList) : 
         itemView.location.text = data.location
         itemView.amount.text = data.offerAmount!!.amount.toString()
         itemView.postDate.text = "${data.postedDate} to ${data.postClosedDate}"
-        itemView.rating.text = data.makeMoneyRating.toString()
         itemView.applicant.text = "Applied~${data.applicant!!.count()}"
         itemView.viewed.text = "Viewed~${data.viewed!!.count()}"
         itemView.available.text = "${data.availablePostCount}-Need"
         itemView.like.setOnClickListener(this)
 
         itemView.likeCount.text = "${data.like!!.size}"
+        itemView.commentCount.text="${data.comment!!.size}"
         itemView.comment.setOnClickListener(this)
-        itemView.share.setOnClickListener(this)
     }
 
     override fun onClick(v: View?) {
         when(v!!.id){
-            R.id.card-> tapJobList.tapJobList(jobListVO)
-            R.id.like -> tapJobList.tapLike("${jobListVO.jobId}",jobListVO.like!!.size)
+            R.id.card-> tapJobList.onNotifyJobList(jobListVO)
+            R.id.like ->{
+                tapJobList.onNotifyLike("${jobListVO.jobId}",jobListVO.like!!.size)
+                itemView.like.setImageResource(R.drawable.ic_favorite_selected)
+            }
+            R.id.comment->tapJobList.onNotifyComment(jobListVO.jobId!!)
         }
 
     }

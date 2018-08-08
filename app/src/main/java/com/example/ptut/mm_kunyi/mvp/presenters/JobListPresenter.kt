@@ -9,7 +9,6 @@ import com.example.ptut.mm_kunyi.vos.JobListVO
 import com.google.firebase.auth.FirebaseUser
 
 class JobListPresenter : BasePresenter<JobListView>(), onTapJobList {
-
     override fun initPresenter(mView: JobListView) {
         super.initPresenter(mView)
     }
@@ -22,22 +21,23 @@ class JobListPresenter : BasePresenter<JobListView>(), onTapJobList {
         JobListModel.getInstance().getJobListData(errorLD)
     }
 
-    override fun tapJobList(jobListVO: JobListVO) {
-        mView.lunchJobDetail(jobListVO)
+    fun onNotifyTapLike(jobId: String,likeId:String){
+        JobListModel.getInstance().addLike(jobId,likeId)
     }
+
 
     var jobListLD: LiveData<List<JobListVO>>? = null
         get() = JobListModel.getInstance().getJobList()
 
-    fun isGoogleSignIn(): Boolean {
-        return JobListModel.getInstance().isUserSignIn()
-    }
 
-    fun onNotifyLogin():FirebaseUser{
-        return JobListModel.getInstance().getUserInfo()
-    }
-    override fun tapLike(jobId: String, likeId: Int) {
+    override fun onNotifyLike(jobId: String, likeId: Int) {
         mView.setLikeCount(jobId,likeId)
+    }
+    override fun onNotifyJobList(jobListVO: JobListVO) {
+        mView.lunchJobDetail(jobListVO)
+    }
+    override fun onNotifyComment(jobId: String) {
+        mView.tapComment(jobId)
     }
 
 }

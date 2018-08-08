@@ -1,16 +1,13 @@
 package com.example.ptut.mm_kunyi.vos
 
-import android.arch.persistence.room.Embedded
-import android.arch.persistence.room.Entity
-import android.arch.persistence.room.PrimaryKey
-import android.arch.persistence.room.TypeConverters
+import android.arch.persistence.room.*
 import com.example.ptut.mm_kunyi.persistence.typeconverter.*
 import java.util.ArrayList
 
 @Entity(tableName = "jobList")
 @TypeConverters(ImagesTypeConverter::class,ApplicantTypeConverter::class,RelevantTypeConverter::class,
 		ViewedTypeConverter::class,RequiredSkillTypeConverter::class,InterestedTypeConverter::class,
-		JobTagTypeConverter::class,LikeTypeConverter::class)
+		JobTagTypeConverter::class,LikeTypeConverter::class,CommentTypeConverter::class)
 data class JobListVO(
 		var jobId:String?=null,
 		var images: List<String>? = null,
@@ -38,5 +35,7 @@ data class JobListVO(
 		var jobTags: List<JobTagsVO>? = null,
 		var postClosedDate: String? = null,
 		var email: String? = null,
-		var like:List<LikeVO>?=null
+		var like:List<LikeVO>?=null,
+		@ColumnInfo(name = "comment")
+		var comment:List<CommentVO>?=null
 )

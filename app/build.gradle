@@ -38,11 +38,11 @@ dependencies {
 
     //Ko Aung Pyae Phyo's mmTextView
     implementation 'net.aungpyaephyo:mmtextview:1.1'
-
     implementation 'com.google.firebase:firebase-core:16.0.1'
     implementation 'com.google.firebase:firebase-database:16.0.1'
     implementation 'com.google.firebase:firebase-auth:16.0.2'
     implementation 'com.google.android.gms:play-services-auth:15.0.1'
+    implementation 'com.google.firebase:firebase-messaging:17.1.0'
     //room
     api "android.arch.persistence.room:runtime:1.1.1"
     kapt "android.arch.persistence.room:compiler:1.1.1"
@@ -52,8 +52,11 @@ dependencies {
     implementation 'com.google.code.gson:gson:2.8.5'
     //Glide
     implementation 'com.github.bumptech.glide:glide:4.7.1'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.7.1'
+
     implementation 'com.firebaseui:firebase-ui-auth:4.0.0'
     implementation 'com.mikhaellopez:circularimageview:3.0.2'
+    implementation 'com.google.android.gms:play-services-appinvite:16.0.1'
 
 
 }

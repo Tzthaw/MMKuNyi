@@ -16,20 +16,19 @@
             android:layout_height="match_parent"
             android:padding="@dimen/margin_small">
 
-
-
-
             <EditText
-                android:id="@+id/et_message"
+                android:id="@+id/commentEdit"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_toStartOf="@+id/btn_send_message"
-                android:background="@color/white_transparent"
+                android:layout_toStartOf="@+id/btnSendMessage"
+                android:background="@color/silver"
+                android:textColor="@color/white"
+                android:textColorHint="@color/white"
                 android:hint="Write Comment.."
                 android:padding="@dimen/margin_medium" />
 
             <RelativeLayout
-                android:id="@+id/btn_send_message"
+                android:id="@+id/btnSendMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_marginEnd="@dimen/margin_medium"
@@ -40,6 +39,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
+                    android:tint="@color/midnightblue"
                     android:src="@drawable/ic_mask_inactive"/>
 
                 <ImageView
@@ -48,7 +48,8 @@
                     android:layout_height="wrap_content"
                     android:layout_centerVertical="true"
                     android:layout_centerHorizontal="true"
-                    android:src="@drawable/ic_add" />
+                    android:src="@drawable/ic_menu_send"
+                    android:tint="@color/white"/>
             </RelativeLayout>
 
         </RelativeLayout>

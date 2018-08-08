@@ -25,11 +25,9 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_toStartOf="@+id/rating"
                 android:orientation="vertical">
 
                 <net.aungpyaephyo.mmtextview.components.MMTextView
@@ -116,7 +114,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_gravity="start"
-                    android:padding="@dimen/margin_medium"
+                    android:paddingLeft="@dimen/margin_medium"
                     android:layout_marginBottom="@dimen/margin_medium"
                     android:layout_marginLeft="@dimen/margin_small"
                     android:layout_marginRight="@dimen/margin_medium"
@@ -129,9 +127,9 @@
 
                         <ImageView
                             android:id="@+id/like"
-                            android:layout_width="40dp"
+                            android:layout_width="30dp"
                             android:layout_height="match_parent"
-                            android:src="@drawable/ic_like_u" />
+                            android:src="@drawable/ic_favorite" />
 
                         <net.aungpyaephyo.mmtextview.components.MMTextView
                             android:id="@+id/likeCount"
@@ -139,6 +137,7 @@
                             android:layout_height="match_parent"
                             android:layout_toEndOf="@+id/like"
                             android:gravity="center"
+                            android:layout_marginStart="@dimen/margin_small"
                             android:paddingStart="@dimen/margin_small"
                             android:text="2"
                             tools:ignore="RtlSymmetry" />
@@ -148,48 +147,26 @@
                         android:id="@+id/commentLayout"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="@dimen/margin_small"
+                        android:layout_marginStart="@dimen/margin_medium"
                         android:layout_toEndOf="@+id/likeLayout">
 
                         <ImageView
                             android:id="@+id/comment"
-                            android:layout_width="40dp"
+                            android:layout_width="30dp"
                             android:layout_height="match_parent"
                             android:gravity="start"
+                            android:layout_marginStart="@dimen/margin_small"
                             android:paddingBottom="@dimen/margin_small"
                             android:paddingTop="@dimen/margin_small"
-                            android:src="@drawable/ic_comment_u" />
+                            android:src="@drawable/ic_comment" />
 
                         <net.aungpyaephyo.mmtextview.components.MMTextView
+                            android:id="@+id/commentCount"
                             android:layout_width="wrap_content"
                             android:layout_height="match_parent"
                             android:layout_toEndOf="@+id/comment"
                             android:gravity="center"
-                            android:paddingStart="@dimen/margin_small"
-                            android:text="2"
-                            tools:ignore="RtlSymmetry" />
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_toEndOf="@+id/commentLayout">
-
-                        <ImageView
-                            android:id="@+id/share"
-                            android:layout_width="40dp"
-                            android:layout_height="match_parent"
                             android:layout_marginStart="@dimen/margin_small"
-                            android:gravity="center"
-                            android:paddingBottom="@dimen/margin_small"
-                            android:paddingTop="@dimen/margin_small"
-                            android:src="@drawable/ic_share_u" />
-
-                        <net.aungpyaephyo.mmtextview.components.MMTextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="match_parent"
-                            android:layout_toEndOf="@+id/share"
-                            android:gravity="center"
                             android:paddingStart="@dimen/margin_small"
                             android:text="2"
                             tools:ignore="RtlSymmetry" />
@@ -198,16 +175,6 @@
                 </RelativeLayout>
             </LinearLayout>
 
-            <net.aungpyaephyo.mmtextview.components.MMTextView
-                android:id="@+id/rating"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="@dimen/margin_medium"
-                android:background="@color/colorPrimary"
-                android:padding="@dimen/margin_medium"
-                android:scaleType="centerCrop"
-                android:textColor="@color/white" />
 
         </RelativeLayout>
 

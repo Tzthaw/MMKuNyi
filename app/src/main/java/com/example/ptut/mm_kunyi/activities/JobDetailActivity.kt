@@ -24,6 +24,7 @@ import com.example.ptut.mm_kunyi.models.JobListModel
 import com.example.ptut.mm_kunyi.mvp.presenters.JobDetailPresenter
 import com.example.ptut.mm_kunyi.mvp.views.JobDetailView
 import com.example.ptut.mm_kunyi.utils.AppConstants
+import com.example.ptut.mm_kunyi.utils.UtilGeneral
 import com.example.ptut.mm_kunyi.vos.*
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -168,7 +169,7 @@ class JobDetailActivity : BaseActivity(), JobDetailView, View.OnClickListener {
     override fun onClick(v: View?) {
         when(v!!.id){
             R.id.apply->{
-                showProgressDialogInfinite("Apply Request")
+               showProgressDialogInfinite("")
                 if (mFirebaseUser != null) {
                     jobId = jobId!!.minus(1)
                     JobListModel.getInstance().applyJob("$jobId", applicantId!!,

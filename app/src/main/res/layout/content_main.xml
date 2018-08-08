@@ -18,10 +18,12 @@
            android:id="@+id/jobRecycler"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"/>
-       <com.example.ptut.healthcare.component.EmptyViewPod
-           android:id="@+id/emptyLayout"
+       <include
+           layout="@layout/view_pod_empty"
+           android:id="@+id/jobListEmpty"
            android:layout_width="match_parent"
-           android:layout_height="wrap_content"/>
+           android:layout_height="match_parent" />
+
    </android.support.v4.widget.SwipeRefreshLayout>
 
 </android.support.constraint.ConstraintLayout>

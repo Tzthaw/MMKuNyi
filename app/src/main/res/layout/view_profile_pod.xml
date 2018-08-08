@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.example.ptut.mm_kunyi.components.pods.ProfileViewPod
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_500_bluegrey"
+    android:padding="@dimen/margin_large"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <com.mikhaellopez.circularimageview.CircularImageView
+        android:id="@+id/seekerProfileUrl"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:contentDescription="@string/nav_header_desc"
+        android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_person" />
+
+    <TextView
+        android:id="@+id/seekerUserName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_below="@id/seekerProfileUrl"
+        android:paddingTop="@dimen/nav_header_vertical_spacing"
+        android:text="Seeker"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    <TextView
+        android:id="@+id/seekerEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:layout_below="@+id/seekerUserName"
+        android:text="@string/nav_header_subtitle" />
+
+    <Button
+        android:id="@+id/signOutBtn"
+        style="@style/Base.TextAppearance.AppCompat.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_below="@id/seekerEmail"
+        android:layout_marginTop="@dimen/margin_medium"
+        android:background="@color/alizarin"
+        android:text="SignOut"
+        android:layout_marginStart="@dimen/margin_medium"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_small" />
+</com.example.ptut.mm_kunyi.components.pods.ProfileViewPod>

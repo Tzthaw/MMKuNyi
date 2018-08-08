@@ -23,6 +23,6 @@ class EmptyViewPod : RelativeLayout {
     }
 
     fun setEmptyData(emptyMsg: String) {
-        tvEmpty!!.text = emptyMsg
+
     }
 }

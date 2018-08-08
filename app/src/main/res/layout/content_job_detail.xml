@@ -163,7 +163,7 @@
                 android:layout_marginBottom="@dimen/margin_medium"
                 android:layout_marginStart="@dimen/margin_medium"
                 android:layout_marginTop="@dimen/margin_medium"
-                android:text="Relevant People"
+                android:text="သင့်တော်သောသူများ"
                 android:textSize="@dimen/text_regular_2x"
                 android:textStyle="bold" />
 
@@ -193,7 +193,7 @@
                 android:layout_marginBottom="@dimen/margin_medium"
                 android:layout_marginStart="@dimen/margin_medium"
                 android:layout_marginTop="@dimen/margin_medium"
-                android:text="Required Skill"
+                android:text="လိုအပ်သောအရည်အချင်း"
                 android:textSize="@dimen/text_regular_2x"
                 android:textStyle="bold" />
 
@@ -223,7 +223,7 @@
                 android:layout_marginBottom="@dimen/margin_medium"
                 android:layout_marginStart="@dimen/margin_medium"
                 android:layout_marginTop="@dimen/margin_medium"
-                android:text="Applicant People"
+                android:text="လျှောက်ထားသောသူများ"
                 android:textSize="@dimen/text_regular_2x"
                 android:textStyle="bold" />
 
@@ -254,7 +254,7 @@
                 android:layout_marginBottom="@dimen/margin_medium"
                 android:layout_marginStart="@dimen/margin_medium"
                 android:layout_marginTop="@dimen/margin_medium"
-                android:text="JobDuration"
+                android:text="အလုပ်လုပ်ရမည့်အချိန်အကြောင်း"
                 android:textColor="@color/colorPrimary"
                 android:textSize="@dimen/text_regular_2x"
                 android:textStyle="bold" />
@@ -316,7 +316,7 @@
                         android:drawablePadding="@dimen/margin_medium"
                         android:gravity="center"
                         android:padding="@dimen/margin_small"
-                        android:text="TotalWorkingDay"
+                        android:text="စုစုပေါင်းလုပ်ရက်"
                         android:textSize="@dimen/text_regular_2x"
                         android:textStyle="bold" />
 
@@ -350,7 +350,7 @@
                         android:drawablePadding="@dimen/margin_medium"
                         android:gravity="center"
                         android:padding="@dimen/margin_small"
-                        android:text="WorkingDaysPerWeek"
+                        android:text="တစ်ပတ်တွင်လုပ်ရက်"
                         android:textSize="@dimen/text_regular_2x"
                         android:textStyle="bold" />
 
@@ -384,7 +384,7 @@
                         android:drawablePadding="@dimen/margin_medium"
                         android:gravity="center"
                         android:padding="@dimen/margin_small"
-                        android:text="WorkingHoursPerDay"
+                        android:text="တစ်ရက်လုပ်သောနာရီ"
                         android:textSize="@dimen/text_regular_2x"
                         android:textStyle="bold" />
 
@@ -421,7 +421,7 @@
                 android:layout_marginBottom="@dimen/margin_medium"
                 android:layout_marginStart="@dimen/margin_medium"
                 android:layout_marginTop="@dimen/margin_medium"
-                android:text="Interested People"
+                android:text="စိတ်ဝင်စားသောသူများ"
                 android:textSize="@dimen/text_regular_2x"
                 android:textStyle="bold" />
 
@@ -451,7 +451,7 @@
                 android:layout_marginBottom="@dimen/margin_medium"
                 android:layout_marginStart="@dimen/margin_medium"
                 android:layout_marginTop="@dimen/margin_medium"
-                android:text="Viewed"
+                android:text="ကြည့်ရှူပီး"
                 android:textSize="@dimen/text_regular_2x"
                 android:textStyle="bold" />
 
@@ -464,14 +464,14 @@
                 android:orientation="vertical" />
         </LinearLayout>
 
-        <Button
+        <net.aungpyaephyo.mmtextview.components.MMButton
             android:id="@+id/apply"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:backgroundTint="@color/colorPrimary"
             android:clickable="true"
             android:foreground="?android:attr/selectableItemBackground"
-            android:text="Apply for this job"
+            android:text="ဒီအလုပ်လျှောက်ရန်"
             android:textColor="@color/white"
             android:textSize="@dimen/text_regular_2x"
             android:theme="@style/AppTheme.BlueButton" />
