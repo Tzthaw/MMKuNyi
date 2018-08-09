@@ -42,17 +42,18 @@ class JobListModel private constructor(context: Context) : BaseModel(context) {
         mJobInfoDR.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val jobListArray = ArrayList<JobListVO>()
-                if (dataSnapshot != null) {
+                if (dataSnapshot.exists()) {
                     for (snapshot in dataSnapshot.children) {
                         val jobListItem = snapshot.getValue<JobListVO>(JobListVO::class.java)
                         jobListItem!!.jobId=snapshot.ref.key
-                        if(jobListItem.like==null){
-                            jobListItem.like=ArrayList()
-                        }
-                        if(jobListItem.comment==null){
-                          jobListItem.comment=ArrayList()
-                        }
-                        Log.e("key",jobListItem.jobId)
+                        if(jobListItem.like==null){ jobListItem.like=ArrayList() }
+                        if(jobListItem.comment==null){ jobListItem.comment=ArrayList() }
+                        if(jobListItem.applicant==null){ jobListItem.applicant=ArrayList() }
+                        if(jobListItem.interested==null){ jobListItem.interested=ArrayList() }
+                        if(jobListItem.jobTags==null){ jobListItem.jobTags=ArrayList() }
+                        if(jobListItem.viewed==null){ jobListItem.viewed=ArrayList() }
+                        if(jobListItem.viewed==null) { jobListItem.viewed = ArrayList() }
+                        if(jobListItem.relevant==null){ jobListItem.relevant=ArrayList() }
                         jobListArray.add(jobListItem)
                     }
                     savePersistence(jobListArray)
@@ -92,21 +93,24 @@ class JobListModel private constructor(context: Context) : BaseModel(context) {
                 }
     }
 
-    fun isUserSignIn(): Boolean { return mFirebaseUser != null }
     fun getAuth(): FirebaseAuth { return mFirebaseAuth }
-    fun getUserInfo(): FirebaseUser { return mFirebaseUser!! }
 
-    fun applyJob(jobId:String,applicantId:String,callback: ApplyCallBack){
-        var applicant:ApplicantVO= ApplicantVO.initApplicant(mFirebaseUser!!.displayName,
+    fun applyJob(jobId:String,applicantId:String,callback: SetValueCallBack){
+        val applicant:ApplicantVO= ApplicantVO.initApplicant(mFirebaseUser!!.displayName,
                 mFirebaseUser!!.photoUrl.toString())
         mJobInfoDR.child(jobId).child("applicant")
-                .child(applicantId).setValue(applicant)
-        callback.onApplySuccess("Success Apply Your Information!!")
+                .child(applicantId).setValue(applicant, DatabaseReference.CompletionListener(
+                        fun(_, _){
+                                callback.onApplySuccess("Success Apply Your Information!!")
+                        }
+
+                ))
+
     }
 
     fun addLike(jobId:String,likeId:String){
         if(mFirebaseUser!=null){
-            var like:LikeVO= LikeVO.initLike(mFirebaseUser!!.uid)
+            val like:LikeVO= LikeVO.initLike(mFirebaseUser!!.uid)
             mJobInfoDR.child(jobId).child("like")
                     .child(likeId).setValue(like)
         }
@@ -119,10 +123,19 @@ class JobListModel private constructor(context: Context) : BaseModel(context) {
     }
 
     fun addComment(jobId: String,commentId:String,details:String){
-        var comment=CommentVO.initComment(mFirebaseUser!!.uid, mFirebaseUser!!.displayName!!,
+        val comment=CommentVO.initComment(mFirebaseUser!!.uid, mFirebaseUser!!.displayName!!,
                 mFirebaseUser!!.photoUrl!!.toString(),details)
         mJobInfoDR.child(jobId).child("comment")
                 .child(commentId).setValue(comment)
+    }
+
+    fun addPost(jobId: String,jobListVO: JobListVO,callback:SetValueCallBack){
+        mJobInfoDR.child(jobId).setValue(jobListVO,DatabaseReference.CompletionListener(
+                fun(_, _){
+                    callback.onApplySuccess("Success Post Publish!!")
+                }
+
+        ))
     }
 
     init {
@@ -132,9 +145,10 @@ class JobListModel private constructor(context: Context) : BaseModel(context) {
         mJobInfoDR = mDatabaseReference.child(AppConstants.KUNYI_INFO_DR)
     }
 
-    interface ApplyCallBack{
+    interface SetValueCallBack{
         fun onApplySuccess(msg:String)
     }
+
     interface SignInWithGoogleAccountDelegate {
         fun onSuccessSignIn(signInAccount: GoogleSignInAccount)
         fun onFailureSignIn(msg: String)

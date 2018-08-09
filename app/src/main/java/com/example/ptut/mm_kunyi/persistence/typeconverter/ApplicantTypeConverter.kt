@@ -7,8 +7,8 @@ import com.google.gson.reflect.TypeToken
 
 class ApplicantTypeConverter{
     @TypeConverter
-    fun toString(favoriteActions: List<ApplicantVO>):String{
-       return Gson().toJson(favoriteActions)
+    fun toString(applicant: List<ApplicantVO>):String{
+       return Gson().toJson(applicant)
     }
     @TypeConverter
     fun toApplicantActions(ApplicantJson:String):List<ApplicantVO>{

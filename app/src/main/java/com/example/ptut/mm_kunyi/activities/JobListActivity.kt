@@ -13,6 +13,7 @@ import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
+import com.example.ptut.healthcare.component.EmptyViewPod
 import com.example.ptut.mm_kunyi.KuNyiApp
 import com.example.ptut.mm_kunyi.R
 import com.example.ptut.mm_kunyi.activities.base.BaseActivity
@@ -48,6 +49,7 @@ class JobListActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
     private var mSmartScrollListener: SmartScrollListener? = null
     private var mGoogleApiClient: GoogleApiClient? = null
     private var userAccountViewPod:UserAccountViewPod?=null
+    private var jobId:Int?=null
     companion object {
         private val IE_NOTIFICATION_ID = "IE_NOTIFICATION_ID"
         private val IE_LAUNCH_ACTION = "IE_LAUNCH_ACTION"
@@ -83,6 +85,7 @@ class JobListActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
         jobListPresenter.errorLD.observe(this, this)
         jobListPresenter.jobListLD!!.observe(this, Observer<List<JobListVO>> {
             swipeRefreshLayout.isRefreshing = false
+            jobId=it!!.size+1
             jobListAdapter.setNewData(it as MutableList<JobListVO>)
         })
 
@@ -135,7 +138,7 @@ class JobListActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
     }
 
     private fun startPostJobActivity() {
-        startActivity(PostJobActivity.newIntent(applicationContext))
+        startActivity(PostJobActivity.newIntent(applicationContext,jobId!!))
     }
 
     private fun googleAuthenticate() {
@@ -197,7 +200,12 @@ class JobListActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
         // as you specify a parent activity in AndroidManifest.xml.
         return when (item.itemId) {
             R.id.actionInvite ->{
-                sendInvitation()
+                if(mFirebaseUser!=null){
+                    sendInvitation()
+                }else{
+                    Snackbar.make(rootLayout,"please sign in your goog account",Snackbar.LENGTH_LONG).show()
+                }
+
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -237,9 +245,12 @@ class JobListActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
         error?.let {
             when (it) {
                 is EmptyError -> {
-                    jobRecycler.setEmptyView(jobListEmpty)
+                    val jobListEmptyError:EmptyViewPod = jobListEmpty as EmptyViewPod
+                    jobListEmptyError.setEmptyData("Empty Data")
+                    jobRecycler.setEmptyView(jobListEmptyError)
                 }
-                is DatabaseError -> UtilGeneral.showNetworkError(rootLayout, applicationContext, error as NetworkError)
+                is DatabaseError ->
+                    Snackbar.make(rootLayout, "Database Reference Error", Snackbar.LENGTH_SHORT).show()
             }
         }
     }

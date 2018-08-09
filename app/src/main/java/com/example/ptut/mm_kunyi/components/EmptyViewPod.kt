@@ -5,7 +5,7 @@ import android.util.AttributeSet
 import android.widget.RelativeLayout
 import kotlinx.android.synthetic.main.view_pod_empty.view.*
 
-class EmptyViewPod : RelativeLayout {
+open class EmptyViewPod : RelativeLayout {
 
     constructor(context: Context) : super(context) {}
 

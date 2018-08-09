@@ -7,8 +7,6 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="5dp"
-    android:layout_marginLeft="5dp"
-    android:layout_marginRight="5dp"
     android:layout_marginTop="5dp"
     android:focusable="true"
     android:foreground="?android:attr/selectableItemBackground"
@@ -37,7 +35,7 @@
                     android:layout_marginLeft="5dp"
                     android:layout_marginRight="5dp"
                     android:layout_marginTop="5dp"
-                    android:textColor="@color/colorPrimary"
+                    android:textColor="@color/midnightblue"
                     android:textSize="18sp"
                     android:textStyle="bold" />
 

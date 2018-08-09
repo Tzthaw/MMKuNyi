@@ -31,8 +31,7 @@ import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_job_detail.*
 import kotlinx.android.synthetic.main.content_job_detail.*
 import com.example.ptut.mm_kunyi.R.id.toolbar
-
-
+import net.aungpyaephyo.mmtextview.components.MMTextView
 
 
 @SuppressLint("Registered")
@@ -179,7 +178,7 @@ class JobDetailActivity : BaseActivity(), JobDetailView, View.OnClickListener {
                 if (mFirebaseUser != null) {
                     jobId = jobId!!.minus(1)
                     JobListModel.getInstance().applyJob("$jobId", applicantId!!,
-                            object : JobListModel.ApplyCallBack {
+                            object : JobListModel.SetValueCallBack {
                                 override fun onApplySuccess(msg: String) {
                                     dismissProgressDialog()
                                     Snackbar.make(coordinatorLayout, msg, Snackbar.LENGTH_LONG).show()
