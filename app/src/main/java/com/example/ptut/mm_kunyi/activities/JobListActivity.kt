@@ -83,9 +83,9 @@ class JobListActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
         refreshFunction()
         googleAuthenticate()
         jobListPresenter.errorLD.observe(this, this)
-        jobListPresenter.jobListLD!!.observe(this, Observer<List<JobListVO>> {
+        jobListPresenter.onNotifyJobListData().observe(this, Observer<List<JobListVO>> {
             swipeRefreshLayout.isRefreshing = false
-            jobId=it!!.size+1
+            jobId=it!!.size
             jobListAdapter.setNewData(it as MutableList<JobListVO>)
         })
 
@@ -138,7 +138,7 @@ class JobListActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
     }
 
     private fun startPostJobActivity() {
-        startActivity(PostJobActivity.newIntent(applicationContext,jobId!!))
+        startActivity(PostJobActivity.newIntent(applicationContext,jobId!!+1))
     }
 
     private fun googleAuthenticate() {

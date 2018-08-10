@@ -34,10 +34,10 @@ class JobListViewHolder(itemView: View, private val tapJobList: onTapJobList) : 
         when(v!!.id){
             R.id.card-> tapJobList.onNotifyJobList(jobListVO)
             R.id.like ->{
-                tapJobList.onNotifyLike("${jobListVO.jobId}",jobListVO.like!!.size)
+                tapJobList.onNotifyLike("${jobListVO.jobPostId!!.minus(1)}",jobListVO.like!!.size)
                 itemView.like.setImageResource(R.drawable.ic_favorite_selected)
             }
-            R.id.comment->tapJobList.onNotifyComment(jobListVO.jobId!!)
+            R.id.comment->tapJobList.onNotifyComment("${jobListVO.jobPostId!!.minus(1)}")
         }
 
     }

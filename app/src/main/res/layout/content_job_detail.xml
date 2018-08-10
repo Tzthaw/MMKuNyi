@@ -189,13 +189,12 @@
                 android:textSize="@dimen/text_regular_2x"
                 android:textStyle="bold" />
 
-            <LinearLayout
-                android:id="@+id/requiredLayout"
+            <ListView
+                android:id="@+id/requiredList"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="@dimen/margin_medium"
-                android:layout_marginStart="@dimen/margin_medium"
-                android:orientation="vertical" />
+                android:layout_marginStart="@dimen/margin_medium" />
         </LinearLayout>
 
         <LinearLayout

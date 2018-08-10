@@ -50,7 +50,6 @@ class PostJobActivity:BaseActivity(), View.OnClickListener {
     private fun getData(id:String):JobListVO{
         val jobListVO=JobListVO()
         jobListVO.jobPostId=id.toInt()
-        jobListVO.jobId=id
         jobListVO.images= listOf("abc","abc","abc")
         jobListVO.email=emailEdit.text.toString()
         jobListVO.postedDate=postedEdit.text.toString()

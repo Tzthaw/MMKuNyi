@@ -26,9 +26,9 @@ class JobListPresenter : BasePresenter<JobListView>(), onTapJobList {
     }
 
 
-    var jobListLD: LiveData<List<JobListVO>>? = null
-        get() = JobListModel.getInstance().getJobList()
-
+    fun onNotifyJobListData():LiveData<List<JobListVO>>{
+        return JobListModel.getInstance().getJobList()
+    }
 
     override fun onNotifyLike(jobId: String, likeId: Int) {
         mView.setLikeCount(jobId,likeId)

@@ -13,6 +13,7 @@ import android.text.Html
 import android.util.Log
 import android.view.View
 import android.widget.LinearLayout
+import android.widget.ListView
 import android.widget.TextView
 import com.example.ptut.mm_kunyi.R
 import com.example.ptut.mm_kunyi.activities.base.BaseActivity
@@ -32,6 +33,9 @@ import kotlinx.android.synthetic.main.activity_job_detail.*
 import kotlinx.android.synthetic.main.content_job_detail.*
 import com.example.ptut.mm_kunyi.R.id.toolbar
 import net.aungpyaephyo.mmtextview.components.MMTextView
+import android.widget.ArrayAdapter
+
+
 
 
 @SuppressLint("Registered")
@@ -110,10 +114,14 @@ class JobDetailActivity : BaseActivity(), JobDetailView, View.OnClickListener {
     }
 
     private fun requiredSkill(lparams: LinearLayout.LayoutParams, jobListVO: JobListVO) {
+        val requiredListVO = ArrayList<String>()
+        val adapter = ArrayAdapter<String>(this,
+                android.R.layout.simple_list_item_1, android.R.id.text1, requiredListVO)
         lparams.setMargins(4, 8, 4, 0);
-        for (requiredSkill in jobListVO.requiredSkill!!) {
-            addTextView(requiredLayout, lparams, requiredSkill)
+        for(requiredVO in jobListVO.requiredSkill!!){
+          adapter.add(requiredVO.skillName)
         }
+        requiredList.adapter=adapter
     }
 
     private fun jobDuration(jobListVO: JobListVO) {
