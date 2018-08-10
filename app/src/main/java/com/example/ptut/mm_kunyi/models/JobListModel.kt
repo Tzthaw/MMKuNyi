@@ -130,12 +130,13 @@ class JobListModel private constructor(context: Context) : BaseModel(context) {
     }
 
     fun addLike(jobId: String, likeId: String) {
+        mFirebaseAuth=FirebaseAuth.getInstance()
+        mFirebaseUser= mFirebaseAuth.currentUser
         if (mFirebaseUser != null) {
             val like: LikeVO = LikeVO.initLike(mFirebaseUser!!.uid)
             mJobInfoDR.child(jobId).child("like")
                     .child(likeId).setValue(like)
         }
-
     }
 
     fun addUnLike(jobId: String, likeId: String) {
@@ -145,6 +146,8 @@ class JobListModel private constructor(context: Context) : BaseModel(context) {
     }
 
     fun addComment(jobId: String, commentId: String, details: String) {
+        mFirebaseAuth=FirebaseAuth.getInstance()
+        mFirebaseUser= mFirebaseAuth.currentUser
         val comment = CommentVO.initComment(mFirebaseUser!!.uid, mFirebaseUser!!.displayName!!,
                 mFirebaseUser!!.photoUrl!!.toString(), details)
         mJobInfoDR.child(jobId).child("comment")
@@ -154,7 +157,6 @@ class JobListModel private constructor(context: Context) : BaseModel(context) {
     fun addPost(jobId: String, jobListVO: JobListVO, callback: SetValueCallBack) {
         mJobInfoDR.child(jobId).setValue(jobListVO)
         callback.onApplySuccess("Success Post Publish!!")
-
     }
 
     init {

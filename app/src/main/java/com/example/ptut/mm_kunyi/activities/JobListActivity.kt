@@ -100,7 +100,6 @@ class JobListActivity : BaseActivity(), NavigationView.OnNavigationItemSelectedL
         jobRecycler.layoutManager = LinearLayoutManager(this)
         jobListAdapter = JobListAdapters(applicationContext, jobListPresenter)
         jobRecycler.adapter = jobListAdapter
-
     }
 
     private fun navigateTool() {

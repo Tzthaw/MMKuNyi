@@ -36,16 +36,14 @@ class PostJobActivity:BaseActivity(), View.OnClickListener {
             supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         }
         toolbar.setNavigationOnClickListener {
-            alertDialog()
+           onBackPressed()
         }
 
         jobId=intent.getIntExtra(AppConstants.JOB_ID,0)
         newPostBtn.setOnClickListener(this)
     }
 
-    override fun onBackPressed() {
-        alertDialog()
-    }
+
 
     private fun getData(id:String):JobListVO{
         val jobListVO=JobListVO()
@@ -83,12 +81,10 @@ class PostJobActivity:BaseActivity(), View.OnClickListener {
         builder.show()
     }
     override fun onClick(v: View?) {
-        JobListModel.getInstance().addPost("$jobId",getData("$jobId"),
+        JobListModel.getInstance().addPost("${jobId!!.minus(1)}",getData("${jobId}"),
                 object :JobListModel.SetValueCallBack{
                     override fun onApplySuccess(msg: String) {
                         Snackbar.make(postLayout,msg,Snackbar.LENGTH_SHORT).show()
-                        startActivity(JobListActivity.newIntent(applicationContext))
-                        finish()
                     }
 
                 })
